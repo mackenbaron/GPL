@@ -6,18 +6,18 @@
 void util::readINIFileString(std::string path,std::string root,std::string userkey,std::string &uservalue,std::string def)
 {
 	WCHAR char_temp[512] = {L'\0'};
-	GetPrivateProfileString((A2U(root).c_str()),A2U(userkey).c_str(),A2U(def).c_str(),char_temp,MAX_PATH,A2U(path).c_str());
+	//GetPrivateProfileString((A2U(root).c_str()),A2U(userkey).c_str(),A2U(def).c_str(),char_temp,MAX_PATH,A2U(path).c_str());
 	uservalue = U2A(char_temp);
 }
 
 void util::readINIFileInt(std::string path,std::string root,std::string userkey,int &userValue,int def)
 {
-	userValue = GetPrivateProfileInt(A2U(root).c_str(),A2U(userkey).c_str(),def,A2U(path).c_str());
+	//userValue = GetPrivateProfileInt(A2U(root).c_str(),A2U(userkey).c_str(),def,A2U(path).c_str());
 }
 
 void util::writeINIFileString(std::string path,std::string root,std::string userkey,std::string value)
 {
-	WritePrivateProfileString(A2U(root).c_str(),A2U(userkey).c_str(),A2U(value).c_str(),A2U(path).c_str());
+	//WritePrivateProfileString(A2U(root).c_str(),A2U(userkey).c_str(),A2U(value).c_str(),A2U(path).c_str());
 }
 
 void util::UTF_8ToUnicode(wchar_t* pOut,char *pText){
