@@ -19,6 +19,8 @@ set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake")
 include(cotire)
 #加入src目录
 add_subdirectory(src)
+#加入test目录
+add_subdirectory(test)
 
 
 
