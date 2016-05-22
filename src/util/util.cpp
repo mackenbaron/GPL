@@ -1,33 +1,67 @@
 #include "stdafx.h"
 #include "util.h" 
 //#include "JsonString.h"
+#include "confile.h"
 #include "JSON_checker.h"
 
-void util::readINIFileString(std::string path,std::string root,std::string userkey,std::string &uservalue,std::string def)
+void gpl::util::readINIFileString(std::string path,std::string root,std::string userkey,std::string &uservalue,std::string def)
 {
-	WCHAR char_temp[512] = {L'\0'};
-	//GetPrivateProfileString((A2U(root).c_str()),A2U(userkey).c_str(),A2U(def).c_str(),char_temp,MAX_PATH,A2U(path).c_str());
-	uservalue = U2A(char_temp);
+	INI_CONFIG *ini = ini_config_create_from_file(const_cast<char*>(path.c_str()),1);
+	uservalue = ini_config_get_string(ini,root.c_str(),userkey.c_str(),const_cast<char*>(def.c_str()));
+	ini_config_destroy(ini);
 }
 
-void util::readINIFileInt(std::string path,std::string root,std::string userkey,int &userValue,int def)
+void gpl::util::readINIFileInt(std::string path,std::string root,std::string userkey,int &userValue,int def)
 {
-	//userValue = GetPrivateProfileInt(A2U(root).c_str(),A2U(userkey).c_str(),def,A2U(path).c_str());
+	INI_CONFIG *ini = ini_config_create_from_file(const_cast<char*>(path.c_str()), 1);
+	userValue = ini_config_get_int(ini, root.c_str(), userkey.c_str(),def);
+	ini_config_destroy(ini);
 }
 
-void util::writeINIFileString(std::string path,std::string root,std::string userkey,std::string value)
+bool gpl::util::writeINIFileString(std::string path,std::string root,std::string userkey,std::string value)
 {
-	//WritePrivateProfileString(A2U(root).c_str(),A2U(userkey).c_str(),A2U(value).c_str(),A2U(path).c_str());
+	INI_CONFIG *ini = ini_config_create_from_file(const_cast<char*>(path.c_str()), 1);
+	int a  = ini_config_set_string(ini, root.c_str(), userkey.c_str(),userkey.size(),value.c_str(),value.size());
+	if (a == 1)
+	{
+		int b = ini_config_save(ini, path.c_str());
+		if (b == 1)
+			return true;
+		else
+			return false;
+	}
+	else
+		return false;
+
+	ini_config_destroy(ini);
 }
 
-void util::UTF_8ToUnicode(wchar_t* pOut,char *pText){
+bool gpl::util::writeINIFileInt(std::string path, std::string root, std::string userkey, int value)
+{
+	INI_CONFIG *ini = ini_config_create_from_file(const_cast<char*>(path.c_str()), 1);
+	int a = ini_config_set_int(ini, root.c_str(), userkey.c_str(), userkey.size(), value);
+	if (a == 1)
+	{
+		int b = ini_config_save(ini, path.c_str());
+		if (b == 1)
+			return true;
+		else
+			return false;
+	}
+	else
+		return false;
+	ini_config_destroy(ini);
+}
+
+
+void gpl::util::UTF_8ToUnicode(wchar_t* pOut,char *pText){
 	char* uchar = (char *)pOut;
 	uchar[1] = ((pText[0] & 0x0F) << 4) + ((pText[1] >> 2) & 0x0F);
 	uchar[0] = ((pText[1] & 0x03) << 6) + (pText[2] & 0x3F);
 	return;
 }
 
-void util::UnicodeToUTF_8(char* pOut,wchar_t* pText){
+void gpl::util::UnicodeToUTF_8(char* pOut,wchar_t* pText){
 	// 注意 WCHAR高低字的顺序,低字节在前，高字节在后z
 	char* pchar = (char *)pText;
 	pOut[0] = (0xE0 | ((pchar[1] & 0xF0) >> 4));
@@ -36,17 +70,17 @@ void util::UnicodeToUTF_8(char* pOut,wchar_t* pText){
 	return;
 }
 
-void util::UnicodeToGB2312(char* pOut,wchar_t uData){
+void gpl::util::UnicodeToGB2312(char* pOut,wchar_t uData){
 	WideCharToMultiByte(CP_ACP,NULL,&uData,1,pOut,sizeof(wchar_t),NULL,NULL);
 	return;
 }    
 
-void util::Gb2312ToUnicode(wchar_t* pOut,char *gbBuffer){
+void gpl::util::Gb2312ToUnicode(wchar_t* pOut,char *gbBuffer){
 	::MultiByteToWideChar(CP_ACP,MB_PRECOMPOSED,gbBuffer,2,pOut,1);
 	return ;
 }
 
-void util::GB2312ToUTF_8(std::string& pOut,char *pText, int pLen){
+void gpl::util::GB2312ToUTF_8(std::string& pOut,char *pText, int pLen){
 	char buf[4];
 	int nLength = pLen* 3;
 	char* rst = new char[nLength];
@@ -83,7 +117,7 @@ void util::GB2312ToUTF_8(std::string& pOut,char *pText, int pLen){
 	return;
 }
 
-void util::UTF_8ToGB2312(std::string &pOut, char *pText, int pLen){
+void gpl::util::UTF_8ToGB2312(std::string &pOut, char *pText, int pLen){
 	char * newBuf = new char[pLen];
 	char Ctemp[4];
 	memset(Ctemp,0,4);
@@ -112,7 +146,7 @@ void util::UTF_8ToGB2312(std::string &pOut, char *pText, int pLen){
 	return;
 }
 
-std::string util::intTOStirng(const int n)
+std::string gpl::util::intTOStirng(const int n)
 {
 	char *_temp=new char[128];
 	memset(_temp,'\0',128);
@@ -130,7 +164,7 @@ std::string util::intTOStirng(const int n)
 	
 }
 
-std::string util::DoubleTOString(const double n)
+std::string gpl::util::DoubleTOString(const double n)
 {
 	char *_temp=new char[128];
 	memset(_temp,'\0',128);
@@ -147,16 +181,16 @@ std::string util::DoubleTOString(const double n)
 	return _tmepsrc;
 }
 
-int util::StringToInt(const char* src)
+int gpl::util::StringToInt(const char* src)
 {
 	return atoi(src);
 }
-double util::StringTODouble(const char* src)
+double gpl::util::StringTODouble(const char* src)
 {
 	return atof(src);
 }
 
-std::vector<std::string> util::split(std::string &str,std::string &pattern)
+std::vector<std::string> gpl::util::split(std::string &str,std::string &pattern)
 {
 	std::string::size_type pos; 
 	std::vector<std::string> result;
@@ -177,7 +211,7 @@ std::vector<std::string> util::split(std::string &str,std::string &pattern)
 	return result;
 }
 
-std::string util::GBKToUTF8(const std::string& strGBK)
+std::string gpl::util::GBKToUTF8(const std::string& strGBK)
 {
 	std::string strOutUTF8 = "";  
 	WCHAR * str1;  
@@ -195,7 +229,7 @@ std::string util::GBKToUTF8(const std::string& strGBK)
 	return strOutUTF8;  
 }
 
-std::string util::UTF8ToGBK(const std::string& strUTF8)
+std::string gpl::util::UTF8ToGBK(const std::string& strUTF8)
 {
 	int len = MultiByteToWideChar(CP_UTF8, 0, strUTF8.c_str(), -1, NULL, 0);  
 	WCHAR * wszGBK = new WCHAR[len + 1];  
@@ -213,7 +247,7 @@ std::string util::UTF8ToGBK(const std::string& strUTF8)
 	return strTemp;  
 }
 
-void util::ReplaceSrc(std::string&s1,const std::string&s2,const std::string&s3)
+void gpl::util::ReplaceSrc(std::string&s1,const std::string&s2,const std::string&s3)
 {
 	std::string::size_type pos=0;
 	std::string::size_type a=s2.size();
@@ -225,7 +259,7 @@ void util::ReplaceSrc(std::string&s1,const std::string&s2,const std::string&s3)
 	}
 }
 
-std::string util::Base64Encode(const unsigned char* Data,int DataByte)
+std::string gpl::util::Base64Encode(const unsigned char* Data,int DataByte)
 {
 	//编码表
 	const char EncodeTable[]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -266,7 +300,7 @@ std::string util::Base64Encode(const unsigned char* Data,int DataByte)
 	return strEncode;
 }
 
-std::string util::Base64Decode(const char* Data,int DataByte,int& OutByte)
+std::string gpl::util::Base64Decode(const char* Data,int DataByte,int& OutByte)
 {
 	//解码表
 		const char DecodeTable[] =
@@ -319,7 +353,7 @@ std::string util::Base64Decode(const char* Data,int DataByte,int& OutByte)
 	return strDecode;
 }
 
-std::string util::UrlEncode(const std::string& szToEncode)
+std::string gpl::util::UrlEncode(const std::string& szToEncode)
 {
 	std::string src = szToEncode;
 	char hex[] = "0123456789ABCDEF";
@@ -348,7 +382,7 @@ std::string util::UrlEncode(const std::string& szToEncode)
 	return dst;
 }
 
-std::string util::UrlDecode(const std::string& szToDecode)
+std::string gpl::util::UrlDecode(const std::string& szToDecode)
 {
 	std::string result;
 	int hex = 0;
@@ -391,7 +425,7 @@ std::string util::UrlDecode(const std::string& szToDecode)
 	return result;
 }
 
-bool util::CheckFormatJson(std::string src)
+bool gpl::util::CheckFormatJson(std::string src)
 {
 // 	JsonString a ;
 // 	const char* _tempa = src.c_str();
@@ -406,7 +440,7 @@ bool util::CheckFormatJson(std::string src)
 		return false;
 }
 
-std::string util::U2A(const std::wstring& str)
+std::string gpl::util::U2A(const std::wstring& str)
 {
 	std::string strDes;  
 	if ( str.empty() )  
@@ -423,7 +457,7 @@ std::string util::U2A(const std::wstring& str)
 __end:  
 	return strDes; 
 }
-std::wstring util::A2U(const std::string& str)//Ascii字符转  
+std::wstring gpl::util::A2U(const std::string& str)//Ascii字符转  
 {  
 	std::wstring strDes;  
 	if ( str.empty() )  
@@ -441,7 +475,7 @@ __end:
 	return strDes;  
 }  
 
-std::string util::U2Utf(const std::wstring& wstrUnicode)//Unicode转utf8    
+std::string gpl::util::U2Utf(const std::wstring& wstrUnicode)//Unicode转utf8    
 {    
 	std::string strRet;  
 	if( wstrUnicode.empty() )  
@@ -455,7 +489,7 @@ std::string util::U2Utf(const std::wstring& wstrUnicode)//Unicode转utf8
 	return strRet;    
 }  
 
-std::wstring util::Utf2U(const std::string &str)//utf8转Unicode  
+std::wstring gpl::util::Utf2U(const std::string &str)//utf8转Unicode  
 {  
 	int u16Len = ::MultiByteToWideChar(CP_UTF8, NULL,str.c_str(),(int)str.size(), NULL, 0);  
 	wchar_t* wstrBuf = new wchar_t[u16Len + 1];  
@@ -467,7 +501,7 @@ std::wstring util::Utf2U(const std::string &str)//utf8转Unicode
 	return wStr;  
 }  
 //分割字符串  
-bool util::SplitStringW(const std::wstring& strSource,const std::wstring& strFlag, std::vector<std::wstring>& paramList)  
+bool gpl::util::SplitStringW(const std::wstring& strSource,const std::wstring& strFlag, std::vector<std::wstring>& paramList)
 {  
 	if ( strSource.empty() || strFlag.empty() )  
 		return false;  
@@ -496,7 +530,7 @@ bool util::SplitStringW(const std::wstring& strSource,const std::wstring& strFla
 	return true;  
 }    
 //替换字符串  
-std::wstring util::StrReplaceW(const std::wstring& strContent, const std::wstring& strTag, const std::wstring& strReplace)  
+std::wstring gpl::util::StrReplaceW(const std::wstring& strContent, const std::wstring& strTag, const std::wstring& strReplace)
 {  
 	size_t nBegin=0, nFind=0;  
 	nFind = strContent.find(strTag, nBegin);  
@@ -519,7 +553,7 @@ std::wstring util::StrReplaceW(const std::wstring& strContent, const std::wstrin
 	return strRet;  
 }  
 
-std::string util::StrReplaceA( const std::string& strContent, const std::string& strTag, const std::string& strReplace )  
+std::string gpl::util::StrReplaceA( const std::string& strContent, const std::string& strTag, const std::string& strReplace )
 {  
 	size_t nBegin=0, nFind=0;  
 	nFind = strContent.find(strTag, nBegin);  
@@ -542,7 +576,7 @@ std::string util::StrReplaceA( const std::string& strContent, const std::string&
 	return strRet;  
 }  
 
-bool util::SplitStringA(const std::string& strSource,const std::string& strFlag, std::vector<std::string>& paramList)
+bool gpl::util::SplitStringA(const std::string& strSource,const std::string& strFlag, std::vector<std::string>& paramList)
 {
 	if ( strSource.empty() || strFlag.empty() )  
 		return false;  
@@ -571,7 +605,7 @@ bool util::SplitStringA(const std::string& strSource,const std::string& strFlag,
 	return true;
 }
 
-int util::ReadFileDate(std::string filePaht,std::string &message)
+int gpl::util::ReadFileDate(std::string filePaht,std::string &message)
 {
 	FILE *in;
 	if(filePaht.empty())
@@ -615,7 +649,7 @@ int util::ReadFileDate(std::string filePaht,std::string &message)
 	}
 }
 
-int util::WriteFileDate(std::string filename,unsigned char* date,int len)
+int gpl::util::WriteFileDate(std::string filename,unsigned char* date,int len)
 {
 	FILE *fp;
 	fp=fopen(const_cast<char*>(filename.c_str()),"wb");
