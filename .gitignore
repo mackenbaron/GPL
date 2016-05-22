@@ -28,4 +28,5 @@
 *.app
 
 # files
-bulic/*
+build/*
+lib/*
