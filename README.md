@@ -13,4 +13,7 @@
 -    6 source：资源文件
 -    7 src：项目主目录
 -    8 test：测试工程
+-    9 out：输出目录
+-    10 cmake：cmake模块目录
+-    11 build：编译目录
 
