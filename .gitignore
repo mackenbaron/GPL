@@ -29,4 +29,6 @@
 
 # files
 build/*
-lib/*
+out/*
+bin/Debug/*
+bin/Release/*
