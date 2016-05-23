@@ -3,6 +3,7 @@
 //#include "JsonString.h"
 #include "confile.h"
 #include "JSON_checker.h"
+#include "parsingargs.h"
 
 void gpl::util::readINIFileString(std::string path,std::string root,std::string userkey,std::string &uservalue,std::string def)
 {
@@ -660,4 +661,28 @@ int gpl::util::WriteFileDate(std::string filename,unsigned char* date,int len)
 		return 0;
 	}
 	return -1;
+}
+
+std::map<std::string, std::vector<std::string> > gpl::util::ParsingArgsSrc(std::string tmpPara, char*item, ...)
+{
+	std::map<std::string, std::vector<std::string> > result;
+	ParsingArgs pa;
+	result.clear();
+	va_list arg_ptr;
+	va_start(arg_ptr, item);
+
+	char* itemsrc = item;
+	while (itemsrc!=NULL)
+	{
+		std::vector<std::string> vsipl;
+		SplitStringA(itemsrc, "%", vsipl);
+		char a = vsipl[0][0];
+		const char *b = vsipl[1].c_str();
+		pa.AddArgType(a, b, ParsingArgs::MUST_VALUE);
+		itemsrc = va_arg(arg_ptr, char*);
+	}
+	std::string errPos;
+	int code = pa.Parse(tmpPara, result, errPos);
+	va_end(arg_ptr);
+	return result;
 }

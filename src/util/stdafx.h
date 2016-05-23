@@ -14,6 +14,9 @@
 #include <queue>
 #include <MMSystem.h>
 #include <map>
+#include <direct.h>  
+#include <vector> 
+#include <list>
 #define snprintf sprintf_s    // Visual Studio on Windows comes with sprintf_s() instead of snprintf()
 #pragma comment(lib,"Shlwapi.lib")
 #pragma comment(lib, "DbgHelp.lib")
