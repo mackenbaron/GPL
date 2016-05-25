@@ -1,0 +1,16 @@
+#查找路径下面所有源文件
+AUX_SOURCE_DIRECTORY(. SRC_LIST)
+#设置静态库
+ADD_LIBRARY(libjson STATIC ${SRC_LIST})
+#设置预编译
+SET_TARGET_PROPERTIES(libjson PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "stdafx.h")
+cotire(libjson)
+#设置目录
+SET_TARGET_PROPERTIES(libjson PROPERTIES FOLDER "Util")
+#设置输出路径
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/out/lib)
+#复制头文件到inchhvi
+#INSTALL(FILES util.h DESTINATION ${PROJECT_SOURCE_DIR}/inc/util)
+
+
+
