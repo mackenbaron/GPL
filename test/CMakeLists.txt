@@ -4,6 +4,8 @@ add_subdirectory(testutil)
 add_subdirectory(testjson)
 #加入testxml目录
 add_subdirectory(testxml)
+#加入testlog目录
+add_subdirectory(testlog)
 
 
 
