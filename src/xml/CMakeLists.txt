@@ -1,0 +1,13 @@
+#查找路径下面所有源文件
+AUX_SOURCE_DIRECTORY(. SRC_LIST)
+#设置静态库
+ADD_LIBRARY(libxml STATIC ${SRC_LIST})
+#设置目录
+SET_TARGET_PROPERTIES(libxml PROPERTIES FOLDER "Util")
+#设置输出路径
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/out/lib)
+#复制头文件到inc
+INSTALL(FILES tinystr.h tinyxml.h DESTINATION ${PROJECT_SOURCE_DIR}/inc/xml)
+
+
+

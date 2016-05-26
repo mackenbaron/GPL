@@ -2,6 +2,8 @@
 add_subdirectory(util)
 #加入json目录
 add_subdirectory(json)
+#加入xml目录
+add_subdirectory(xml)
 
 
 

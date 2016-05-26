@@ -1,6 +1,6 @@
 #查找路径下面所有源文件
 #AUX_SOURCE_DIRECTORY(. SRC_LIST)
-SET(SRC_LIST test1.c)
+SET(SRC_LIST main.cpp stdafx.cpp)
 #引用头文件目录
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/inc/json)
 #引用库目录
