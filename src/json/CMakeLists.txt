@@ -1,7 +1,7 @@
 #查找路径下面所有源文件
 AUX_SOURCE_DIRECTORY(. SRC_LIST)
 #设置c++编译器
-ADD_DEFINITIONS(-TP)
+#ADD_DEFINITIONS(-TP)
 #设置静态库
 ADD_LIBRARY(libjson STATIC ${SRC_LIST})
 #设置目录

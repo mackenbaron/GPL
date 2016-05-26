@@ -15,6 +15,10 @@
 
 #include "json_object.h"
 
+#if defined(WIN32) && !defined(__cplusplus)
+#define inline __inline
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
