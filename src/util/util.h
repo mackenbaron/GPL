@@ -2,6 +2,32 @@
 #define UTIL_H
 namespace gpl
 {
+	typedef struct ResultData // 计算结果
+	{
+		bool bDone; // Done
+		std::string strPath; // 路径
+		__int64 ulSize; // 大小
+		std::string strMDate; // 修改日期
+		std::string strVersion; // 版本
+		std::string strMD5; // MD5
+		std::string strSHA1; // SHA1
+		std::string strSHA256; // SHA256
+		std::string strCRC32; // CRC32
+		std::string strError; // Error string
+		ResultData()
+			:bDone(false)
+			, strPath("")
+			, ulSize(0)
+			, strMDate("")
+			, strVersion("")
+			, strMD5("")
+			, strSHA1("")
+			, strSHA256("")
+			, strCRC32("")
+			, strError("")
+		{}
+	}Result;
+
 	class util
 	{
 	public:
@@ -41,6 +67,22 @@ namespace gpl
 		int WriteFileDate(std::string filename, unsigned char* date, int len);//写文件
 
 		std::map<std::string, std::vector<std::string> > ParsingArgsSrc(std::string tmpPara, char*item, ... );//解析传入参数
+		std::string SrcEncrypt(std::string szSource, std::string szPassWord); // 加密，返回加密结果
+		std::string SrcDecrypt(std::string szSource, std::string szPassWord); // 解密，返回解密结果
+		int getFileVerify(std::vector<std::string> &infile, std::vector<Result> &outre);//计算MD5、SHA1、SHA256、CRC32
+	};
+
+	//定义读入文件有buffer
+	class DataBuffer
+	{
+	public:
+		DataBuffer();
+		~DataBuffer();
+
+		static unsigned int preflen;
+
+		unsigned int datalen;
+		unsigned char *data;
 	};
 }
 
