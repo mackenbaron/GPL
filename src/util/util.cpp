@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "util.h" 
-//#include "JsonString.h"
 #include "confile.h"
 #include "JSON_checker.h"
 #include "parsingargs.h"
@@ -10,8 +9,20 @@
 #include "sha1.h"
 #include "sha256.h"
 #include "crc32.h"
+//定义读入文件有buffer
+class DataBuffer
+{
+public:
+	DataBuffer();
+	~DataBuffer();
 
-unsigned int gpl::DataBuffer::preflen = 1048576; // 2^20
+	static unsigned int preflen;
+
+	unsigned int datalen;
+	unsigned char *data;
+};
+
+unsigned int DataBuffer::preflen = 1048576; // 2^20
 #define BOX_LEN 256
 
 void gpl::util::readINIFileString(std::string path,std::string root,std::string userkey,std::string &uservalue,std::string def)
@@ -856,14 +867,14 @@ int gpl::util::getFileVerify(std::vector<std::string> &infile, std::vector<Resul
 	return 0;
 }
 
-gpl::DataBuffer::DataBuffer() 
+DataBuffer::DataBuffer() 
 	:datalen(0), data(NULL)
 {
 	data = new unsigned char[DataBuffer::preflen];
 	memset(data, '\0', DataBuffer::preflen);
 }
 
-gpl::DataBuffer::~DataBuffer()
+DataBuffer::~DataBuffer()
 {
 	delete[] data;
 	datalen = 0;

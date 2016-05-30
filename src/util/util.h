@@ -71,19 +71,6 @@ namespace gpl
 		std::string SrcDecrypt(std::string szSource, std::string szPassWord); // 解密，返回解密结果
 		int getFileVerify(std::vector<std::string> &infile, std::vector<Result> &outre);//计算MD5、SHA1、SHA256、CRC32
 	};
-
-	//定义读入文件有buffer
-	class DataBuffer
-	{
-	public:
-		DataBuffer();
-		~DataBuffer();
-
-		static unsigned int preflen;
-
-		unsigned int datalen;
-		unsigned char *data;
-	};
 }
 
 
