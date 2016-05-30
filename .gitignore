@@ -32,3 +32,4 @@ build/*
 out/*
 bin/Debug/*
 bin/Release/*
+html/*
