@@ -6,6 +6,9 @@ add_subdirectory(json)
 add_subdirectory(xml)
 #加入log目录
 add_subdirectory(log)
+#添加sqlite/odbc目录
+add_subdirectory(odbc)
+add_subdirectory(sqlite)
 
 
 
