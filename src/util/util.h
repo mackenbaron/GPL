@@ -66,7 +66,7 @@ namespace gpl
 		int ReadFileDate(std::string filePaht, std::string &message);//读文件
 		int WriteFileDate(std::string filename, unsigned char* date, int len);//写文件
 
-		std::map<std::string, std::vector<std::string> > ParsingArgsSrc(std::string tmpPara, char*item, ... );//解析传入参数
+		std::map<std::string, std::vector<std::string> > ParsingArgsSrc(std::string tmpPara, char*item, ... );//解析传入参数 item=>i&inputfile 参数简称%参数全称
 		std::string SrcEncrypt(std::string szSource, std::string szPassWord); // 加密，返回加密结果
 		std::string SrcDecrypt(std::string szSource, std::string szPassWord); // 解密，返回解密结果
 		int getFileVerify(std::vector<std::string> &infile, std::vector<Result> &outre);//计算MD5、SHA1、SHA256、CRC32
