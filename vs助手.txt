@@ -1,0 +1,94 @@
+Title：FileNote
+Shortcut：#filenote
+Description：文件注释
+
+    /** 
+    *  Copyright (c) $YEAR$, DayBreak(https://github.com/DayBreakZhang) 
+    *  All rights reserved. 
+    * 
+    *  @file        $FILE_BASE$.$FILE_EXT$ 
+    *  @author      DayBreakZhang(a365316465@gmail.com) 
+    *  @date        $YEAR$/$MONTH_02$/$DAY_02$ $HOUR_02$:$MINUTE$ 
+    * 
+    *  @brief       $brief$ 
+    *  @note        $note$ 
+    * 
+    *  @version 
+    *    - v$VerNO$    $YEAR$/$MONTH_02$/$DAY_02$ $HOUR_02$:$MINUTE$    DayBreakZhang    $VerNoBrief$ 
+    *  @todo	    $todo$
+    */  
+
+
+Title：ClassNote
+Shortcut：#classnote
+Description：类注释
+
+    /** 
+    *  @author      DayBreakZhang(a365316465@gmail.com)
+    *  @date        $YEAR$/$MONTH_02$/$DAY_02$ $HOUR_02$:$MINUTE$ 
+    *  @class       $classname$ 
+    *  @brief       $brief$ 
+    *  @attention   注意
+    *  @bug	    问题
+    *  @warning     警告
+    *  @note        $note$ 
+    */  
+
+
+Title：FuntionPublicNote
+Shortcut：#funPubnote
+Description：共有函数注释
+
+    /** 
+    *  @date        $YEAR$/$MONTH_02$/$DAY_02$ $HOUR_02$:$MINUTE$ 
+    *  @brief       $brief$ 
+    *  @param[in]    
+    *  @param[out]   
+    *  @return      成功返回true，否则为false 
+    *  @pre         前置条件
+    *  @remarks     备注 
+    *  @see         参考内容
+    *  @test        测试       
+    */  
+
+Title：FuntionPrivateNote
+Shortcut：#funPrinote
+Description：私有函数注释
+
+    /** 
+    *  @date        $YEAR$/$MONTH_02$/$DAY_02$ $HOUR_02$:$MINUTE$ 
+    *  @brief       $brief$ 
+    *  @param[in]    
+    *  @param[out]   
+    *  @return      成功返回true，否则为false        
+    */
+
+
+Title：MemberNote
+Shortcut：#memnote
+Description：结构体、枚举、成员变量等注释
+
+
+    /** $VariableNote$ */   
+    /**< $VariableNote$ */
+
+
+Title：NewVerBrief
+Shortcut：#newver
+Description：新版本说明
+
+    *    - v$VerNo$    $YEAR$/$MONTH_02$/$DAY_02$ $HOUR_02$:$MINUTE$    DayBreakZhang
+
+Title：date
+Shortcut：#date
+Description：获取当前时间
+
+    $YEAR$/$MONTH_02$/$DAY_02$ $HOUR_02$:$MINUTE$     
+
+
+Title：line
+Shortcut：#line
+Description：注释一行
+
+	/**< $note$ */
+
