@@ -280,7 +280,7 @@ void gpl::util::ReplaceSrc(std::string&s1,const std::string&s2,const std::string
 	}
 }
 
-std::string gpl::util::Base64Encode(const unsigned char* Data,int DataByte)
+std::string gpl::util::Base64Encode(const char* Data,int DataByte)
 {
 	//±àÂë±í
 	const char EncodeTable[]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -626,7 +626,7 @@ bool gpl::util::SplitStringA(const std::string& strSource,const std::string& str
 	return true;
 }
 
-int gpl::util::ReadFileDate(std::string filePaht,std::string &message)
+int gpl::util::ReadFileDate(std::string filePaht, std::string &message, std::string format/*="r"*/)
 {
 	FILE *in;
 	if(filePaht.empty())
@@ -635,7 +635,7 @@ int gpl::util::ReadFileDate(std::string filePaht,std::string &message)
 	{
 		return -1;
 	}
-	if((in=fopen(filePaht.c_str(),"r"))!=NULL)
+	if((in=fopen(filePaht.c_str(),format.c_str()))!=NULL)
 	{
 		std::string src ="";
 		char* result1 = NULL;
@@ -670,10 +670,10 @@ int gpl::util::ReadFileDate(std::string filePaht,std::string &message)
 	}
 }
 
-int gpl::util::WriteFileDate(std::string filename,unsigned char* date,int len)
+int gpl::util::WriteFileDate(std::string filename, unsigned char* date, int len, std::string format/*="wb"*/)
 {
 	FILE *fp;
-	fp=fopen(const_cast<char*>(filename.c_str()),"wb");
+	fp = fopen(const_cast<char*>(filename.c_str()), format.c_str());
 	if(fp!=NULL)
 	{
 		fwrite(date,sizeof(unsigned char),len,fp);

@@ -1,0 +1,54 @@
+/**
+ * \mainpage Õ®”√ø‚£®GPL£©
+ *
+ * \section intro_sec oFono telephony client APIs.
+ *
+ * This library provides easy to use APIs to use by hiding all details.
+ *
+ * \section install_sec Installation
+ *
+ * \subsection Download the RPM package
+ *
+ * Go to download page to download the RPM package.
+ *
+ * \subsection Install
+ *
+ * Run the following command in terminal to install:
+ * \code
+ * $rpm -ivh libtest-api.rpm
+ * \endcode
+ *
+ * \section usage_sec How to use this library
+ *
+ * \subsection source Include in file
+ *
+ * To use this library, you must include the headers in your source file:
+ * \code
+ * #include <test.h>
+ * \endcode
+ * If you use other interfaces, you must include it too, like message:
+ * \code
+ * #include <test.h>
+ * #include <test-helper.h>
+ * \endcode
+ *
+ * \subsection compile How to compile
+ *
+ * To build with this library you can use pkg-config to get link options:
+ * \code
+ * $pkg-config --cflags --libs test-api
+ * \endcode
+ */
+/**
+ * \file test.h
+ * \brief API interface test is in charge of path management
+ *
+ * It provides APIs to query path list and to query properties for a specific path.
+ *
+ * \note
+ * This interface requirs to run in main loop thread because some GLib dependency.
+ *
+ * Besides, you should keep main loop idle for most of times in order to get callbacks and make sure
+ * libtest-api process signals successfully. This means you should put business logic into a separate
+ * thread.
+ */
