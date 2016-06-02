@@ -24,5 +24,5 @@
 #include <sys/types.h>
 #include <sys/stat.h> 
 #endif 
-#include "glog/logging.h"
-using namespace google;
+#include "log.h";
+using namespace gpl;

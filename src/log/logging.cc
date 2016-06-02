@@ -105,6 +105,8 @@ GLOG_DEFINE_bool(alsologtostderr, BoolFromEnv("GOOGLE_ALSOLOGTOSTDERR", false),
                  "log messages go to stderr in addition to logfiles");
 GLOG_DEFINE_bool(colorlogtostderr, false,
                  "color messages logged to stderr (if supported by terminal)");
+GLOG_DEFINE_bool(servitysinglelog, false,
+	"According to the level of the log file");
 #ifdef OS_LINUX
 GLOG_DEFINE_bool(drop_log_memory, true, "Drop in-memory buffers of log contents. "
                  "Logs can grow very quickly and they are rarely read before they "
@@ -762,12 +764,20 @@ inline void LogDestination::LogToAllLogfiles(LogSeverity severity,
                                              const char* message,
                                              size_t len) {
 
-  if ( FLAGS_logtostderr ) {           // global flag: never log to file
-    ColoredWriteToStderr(severity, message, len);
-  } else {
-    for (int i = severity; i >= 0; --i)
-      LogDestination::MaybeLogToLogfile(i, timestamp, message, len);
-  }
+	if (FLAGS_logtostderr) { // global flag: never log to file
+		ColoredWriteToStderr(severity, message, len);
+	}
+	else {
+		if (FLAGS_servitysinglelog)
+		{
+			LogDestination::MaybeLogToLogfile(severity, timestamp, message, len);
+		}
+		else
+		{
+			for (int i = severity; i >= 0; --i)
+				LogDestination::MaybeLogToLogfile(i, timestamp, message, len);
+		}
+	}
 }
 
 inline void LogDestination::LogToSinks(LogSeverity severity,
@@ -963,7 +973,7 @@ void LogFileObject::Write(bool force_flush,
   }
 
   if (static_cast<int>(file_length_ >> 20) >= MaxLogSize() ||
-      PidHasChanged()) {
+	  PidHasChanged() || DayHasChanged()) {
     if (file_ != NULL) fclose(file_);
     file_ = NULL;
     file_length_ = bytes_since_flush_ = 0;
