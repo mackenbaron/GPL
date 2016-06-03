@@ -5,10 +5,12 @@
 int main(int argc, char *argv[])
 {
 	LOGINIT();
-	LOGINFO("First Number: %d.",1);
-	LOGERROR("Second Number: %d.",2);
-	std::string src= "中国";
+ 	LOGINFO("First Number: %d.", 1);
+ 	LOGERROR("Second Number: %d.", 2);
+ 	std::string src = "中国";
+ 	LOGINFO("First Number: %s.", src.c_str());
+	LOGINFO("First Number: %d.", 1);
+	LOGERROR("Second Number: %d.", 2);
 	LOGINFO("First Number: %s.", src.c_str());
-	LOGDOWN();
 	return 1;
 }

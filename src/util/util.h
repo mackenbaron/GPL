@@ -18,6 +18,12 @@
 	*/
 namespace gpl
 {
+	/**
+	*  @author      DayBreakZhang(a365316465@gmail.com)
+	*  @date        2016/05/31 11:01
+	*  @class       ResultData
+	*  @brief       校验文件返回结果的结构体
+	*/
 	/** 计算文件校验码的返回结构 */
 	typedef struct ResultData
 	{
