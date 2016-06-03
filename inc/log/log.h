@@ -21,6 +21,10 @@
 #define LOGWARNING(...) gpl::Log::Instance()->writeLog(L_ERROR,__VA_ARGS__);/**< 宏定义WARNINE log */
 #define LOGFATAL(...) gpl::Log::Instance()->writeLog(L_FATAL,__VA_ARGS__);/**< 宏定义FATAL log */
 
+#define LOGTINFO(...) gpl::Log::Instance()->writeThreadLog(L_INFO, __VA_ARGS__);/**< 宏定义线程安全INFO log */
+#define LOGTERROR(...) gpl::Log::Instance()->writeThreadLog(L_ERROR, __VA_ARGS__);/**< 宏定义线程安全ERROR log */
+#define LOGTWARNING(...) gpl::Log::Instance()->writeThreadLog(L_WARNING, __VA_ARGS__);/**< 宏定义线程安全WARNING log */
+#define LOGTFATAL(...) gpl::Log::Instance()->writeThreadLog(L_FATAL, __VA_ARGS__); /**< 宏定义线程安全 log */
 namespace gpl
 {
 	/** 设置日志级别 */
@@ -94,6 +98,23 @@ namespace gpl
 			*  @see         gpl::logLevel
 			*/
 		void writeLog(outputLogLevel level, const char *format, ...);
+		/**
+		*  @date        2016/06/03 10:53
+		*  @brief       写线程安全日志
+		*  @param[in]   level[outputLogLevel] 输出日志类型
+		*  @param[in]   format[const char *] 输出的格式化字符
+		*  @return      void
+		*  @pre         level分级
+		- L_INFO 日常信息
+		- L_WARNING 警告信息
+		- L_ERROR 错误信息
+		- L_FATAL 致命错误
+		*  @pre			format格式
+		- 使用printf 中的输出格式 e.g ("printf%s","hello")
+		*  @remarks     可以分级写日志，写入到不同的文件里面。
+		*  @see         gpl::logLevel
+		*/
+		void writeThreadLog(outputLogLevel level, const char *format, ...);
 		/**
 			*  @date        2016/06/03 11:06
 			*  @brief       初始化log静态对像

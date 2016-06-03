@@ -53,7 +53,7 @@ int gpl::Log::initlog()
 		system("md .\\log\\");
 
 	google::InitGoogleLogging("");
-#ifdef DEBUG_MODE
+#ifndef DEBUG_MODE
 	google::SetStderrLogging(google::GLOG_INFO); //设置级别高于 google::INFO 的日志同时输出到屏幕
 #else
 	google::SetStderrLogging(google::GLOG_FATAL);//设置级别高于 google::FATAL 的日志同时输出到屏幕
@@ -97,6 +97,7 @@ void gpl::Log::writeLog(outputLogLevel level, const char *format, ...)
 		break;
 	}
 	va_end(arg_ptr);
+
 	memset(pLogBuff, 0, 2048);
 }
 
@@ -107,4 +108,30 @@ gpl::Log * gpl::Log::Instance()
 		m_pInstance = new Log();
 	}
 	return m_pInstance;
+}
+
+void gpl::Log::writeThreadLog(outputLogLevel level, const char *format, ...)
+{
+	va_list arg_ptr;
+	va_start(arg_ptr, format);
+	vsprintf(pLogBuff, format, arg_ptr);
+	switch (level)
+	{
+	case 1:
+		RAW_LOG(INFO, pLogBuff);
+		break;
+	case 2:
+		RAW_LOG(WARNING, pLogBuff);
+		break;
+	case 3:
+		RAW_LOG(ERROR, pLogBuff);
+		break;
+	case 4:
+		RAW_LOG(FATAL, pLogBuff);
+		break;
+	default:
+		break;
+	}
+	va_end(arg_ptr);
+	memset(pLogBuff, 0, 2048);
 }
