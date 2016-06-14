@@ -53,54 +53,59 @@ public:
 	*@return 成功返回true,否则返回false;
 	*/
 	bool   getDumpAttribute(xmlAttrPtr attrPtr, std::multimap<std::string, std::string>&resultSet);
+
+	bool openXMLDoc(std::string filename);
+	bool newXMLDoc(std::string filename = "");
+
+	bool addTab(std::string tab);
+	bool editTabName(std::string tab_old, std::string tab_new);
+	bool delTab(std::string tab);
+
+	bool addItem(std::string tab, std::string item, std::string content);
+	bool editItemName(std::string tab, std::string item_old, std::string item_new);
+	bool delItem(std::string tab, std::string item);
+	bool editItemContent(std::string tab, std::string item, sstd::tring psw_new);
+
+	int getTabsCount(void);
+	int getItemsCountInTab(std::string tab);
+
+	std::string getTab(int index);
+	std::string getItemInTab(std::string tab, int index);
+
+	std::string getTabFirst(void);
+	std::string getTabNext(void);
+
+	std::string getItemInTabFirst(std::string tab);
+	std::string getItemInTabNext(void);
+
+	std::string getContent(std::string tab, std::string item);
+
+	bool saveToFile(std::string filename = "", bool blankpad = true);
+private:
+	int getItemsCount(xmlNodePtr fatherNode);
+	xmlNodePtr addNode(xmlNodePtr fatherNode, std::string name);
+	xmlNodePtr findNode(xmlNodePtr fatherNode, int index);
+	xmlNodePtr findNode(xmlNodePtr fatherNode, std::string name);
+	xmlNodePtr findNodeNext(xmlNodePtr startNode, xmlNodePtr* ipc);
+	xmlNodePtr findTab(std::string tab);
+	xmlNodePtr findItemInTab(std::string tab, std::string item);
+	std::string getNodeName(xmlNodePtr node);
+	std::string getNodeContent(xmlNodePtr node);
 public:
 	xmlDocPtr doc;
-	/*
-	结构如下：
-	typedef struct _xmlXPathObject xmlXPathObject;
-	typedef xmlXPathObject *xmlXPathObjectPtr;
-	struct _xmlXPathObject {
-	xmlXPathObjectType type;
-	xmlNodeSetPtr nodesetval;
-	int boolval;
-	double floatval;
-	xmlChar *stringval;
-	void *user;
-	int index;
-	void *user2;
-	int index2;
-	};
-	typedef struct _xmlNodeSet xmlNodeSet;
-	typedef xmlNodeSet *xmlNodeSetPtr;
-	struct _xmlNodeSet {
-	int nodeNr;                 // number of nodes in the set
-	int nodeMax;                // size of the array as allocated
-	xmlNodePtr *nodeTab;        // array of nodes in no particular order
-	// @@ with_ns to check wether namespace nodes should be looked at @@
-	};
-	typedef struct _xmlNode xmlNode;
-	typedef xmlNode *xmlNodePtr;
-	struct _xmlNode {
-	void           *_private;   // application data
-	xmlElementType   type;      // type number, must be second !
-	const xmlChar   *name;      // the name of the node, or the entity
-	struct _xmlNode *children;  // parent->childs link
-	struct _xmlNode *last;      // last child link
-	struct _xmlNode *parent;    // child->parent link
-	struct _xmlNode *next;      // next sibling link
-	struct _xmlNode *prev;      // previous sibling link
-	struct _xmlDoc  *doc;       // the containing document
 
-	// End of common part
-	xmlNs           *ns;        // pointer to the associated namespace
-	xmlChar         *content;   // the content
-	struct _xmlAttr *properties;// properties list
-	xmlNs           *nsDef;     // namespace definitions on this node
-	};
-	*/
 	xmlXPathContextPtr context;
 	xmlXPathObjectPtr resource;
 	bool isOnlyEntityName;
+	//存储文件全路径名
+	std::string dbFileName;
+	//xml
+	xmlDocPtr pxmlDoc;
+	//xml根元素
+	xmlNodePtr root_node;
+	//链表遍历指针
+	xmlNodePtr tab_ipc;
+	xmlNodePtr item_ipc;
 };
 
 gpl::xml::LibXml::LibXml()
@@ -108,11 +113,16 @@ gpl::xml::LibXml::LibXml()
 	doc = 0;
 	context = 0;
 	resource = 0;
+	dbFileName.clear();
+	pxmlDoc = NULL;
+	tab_ipc = NULL;
+	item_ipc = NULL;
 }
 
 gpl::xml::LibXml::~LibXml()
 {
-
+	if (pxmlDoc)
+		xmlFreeDoc(pxmlDoc);
 }
 /**
 *去除字符串两边的空格,回车换行,TAB
