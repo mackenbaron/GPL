@@ -140,7 +140,8 @@ SET(SRC_LIST 	buf.c
 		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/common/vli_decoder.c
 		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/common/vli_encoder.c
 		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/common/vli_size.c
-		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/simple/x86.c)
+		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/simple/x86.c
+		xml.cpp)
 #添加引用目录
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/. 
 		${CMAKE_CURRENT_SOURCE_DIR}/iconv 
@@ -181,7 +182,7 @@ SET_TARGET_PROPERTIES(libxml PROPERTIES FOLDER "Util")
 #设置输出路径
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/out/lib)
 #复制头文件到inc
-#INSTALL(FILES  DESTINATION ${PROJECT_SOURCE_DIR}/inc/xml)
+INSTALL(FILES xml.h DESTINATION ${PROJECT_SOURCE_DIR}/inc/xml)
 
 
 
