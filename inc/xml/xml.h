@@ -462,6 +462,7 @@ namespace gpl
 		/**
 			*  @date        2016/06/15 13:28
 			*  @brief       创建xml
+			*  @param[in]	rootnode[string]创建xml的root节点名字
 			*  @param[in]   filname[string]创建xml的名字,如果这里为空，那么在saveToFile里面一定要写名字
 			*  @param[in]   encod[string]创建xml的编码格式，默认utf-8
 			*  @return      成功返回true，否则为false
@@ -470,7 +471,7 @@ namespace gpl
 			*  @see         gpl::xml::saveToFile
 			*  @test        测试
 			*/
-		bool createXml(std::string encod = "UTF-8", std::string filename = "");
+		bool createXml(std::string rootnode,std::string encod = "UTF-8", std::string filename = "");
 		/**
 			*  @date        2016/06/15 13:41
 			*  @brief       添加一个节点
@@ -495,6 +496,19 @@ namespace gpl
 			*  @test        测试
 			*/
 		bool addAItem(std::string node, std::string item, std::string content);
+/** 
+    *  @date        2016/06/15 15:03 
+    *  @brief       给节点添加属性 
+    *  @param[in]   node[string]要添加属性的节点
+	*  @param[in]   attriname[string]属性名称
+    *  @param[in]   attrivalue[string]属性值
+    *  @return      成功返回true，否则为false 
+    *  @pre         段落
+    *  @remarks     评论 
+    *  @see         参考内容
+    *  @test        测试       
+    */  
+		bool addattribute(std::string node,std::string attriname ,std::string attrivalue);
 		/**
 			*  @date        2016/06/15 14:24
 			*  @brief       保存xml到文件

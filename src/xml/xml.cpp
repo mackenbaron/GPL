@@ -54,58 +54,12 @@ public:
 	*/
 	bool   getDumpAttribute(xmlAttrPtr attrPtr, std::multimap<std::string, std::string>&resultSet);
 
-	bool openXMLDoc(std::string filename);
-	bool newXMLDoc(std::string encod = "UTF-8", std::string filename = "");
-
-	bool addTab(std::string tab);
-	bool editTabName(std::string tab_old, std::string tab_new);
-	bool delTab(std::string tab);
-
-	bool addItem(std::string tab, std::string item, std::string content);
-	bool editItemName(std::string tab, std::string item_old, std::string item_new);
-	bool delItem(std::string tab, std::string item);
-	bool editItemContent(std::string tab, std::string item, std::string psw_new);
-
-	int getTabsCount(void);
-	int getItemsCountInTab(std::string tab);
-
-	std::string getTab(int index);
-	std::string getItemInTab(std::string tab, int index);
-
-	std::string getTabFirst(void);
-	std::string getTabNext(void);
-
-	std::string getItemInTabFirst(std::string tab);
-	std::string getItemInTabNext(void);
-
-	std::string getContent(std::string tab, std::string item);
-
-	bool saveToFile(std::string encod = "UTF-8", std::string filename = "", bool blankpad = true);
-private:
-	int getItemsCount(xmlNodePtr fatherNode);
-	xmlNodePtr addNode(xmlNodePtr fatherNode, std::string name);
-	xmlNodePtr findNode(xmlNodePtr fatherNode, int index);
-	xmlNodePtr findNode(xmlNodePtr fatherNode, std::string name);
-	xmlNodePtr findNodeNext(xmlNodePtr startNode, xmlNodePtr* ipc);
-	xmlNodePtr findTab(std::string tab);
-	xmlNodePtr findItemInTab(std::string tab, std::string item);
-	std::string getNodeName(xmlNodePtr node);
-	std::string getNodeContent(xmlNodePtr node);
 public:
 	xmlDocPtr doc;
 
 	xmlXPathContextPtr context;
 	xmlXPathObjectPtr resource;
 	bool isOnlyEntityName;
-	//存储文件全路径名
-	std::string dbFileName;
-	//xml
-	xmlDocPtr pxmlDoc;
-	//xml根元素
-	xmlNodePtr root_node;
-	//链表遍历指针
-	xmlNodePtr tab_ipc;
-	xmlNodePtr item_ipc;
 };
 
 gpl::xml::LibXml::LibXml()
@@ -299,366 +253,6 @@ bool gpl::xml::LibXml::getDumpAttribute(xmlAttrPtr attrPtr, std::multimap<std::s
 	return true;
 }
 
-bool gpl::xml::LibXml::openXMLDoc(std::string filename)
-{
-	/*parse the file and get the DOM */
-	pxmlDoc = xmlReadFile(filename.c_str(), NULL, 0);
-	if (NULL == pxmlDoc)
-		return false;
-
-	/*Get the root element node */
-	root_node = xmlDocGetRootElement(pxmlDoc);
-	//检查确认当前文档中包含内容
-	if (NULL == root_node)
-		return false;
-	//根元素应该是R
-	if (xmlStrcmp(root_node->name, BAD_CAST "R"))
-		return false;
-
-	//记录保存xml的文件名
-	dbFileName = filename;
-
-	return true;
-}
-
-bool gpl::xml::LibXml::newXMLDoc(std::string encod/*="UTF-8"*/, std::string filename /*= ""*/)
-{
-	/*
-	* Creates a new document, a node and set it as a root node
-	*/
-	pxmlDoc = xmlNewDoc(BAD_CAST "1.0");
-	root_node = xmlNewNode(NULL, BAD_CAST "R");
-	xmlDocSetRootElement(pxmlDoc, root_node);
-
-	if (!filename.empty())
-	{
-		/*
-		* Dumping document to stdio or file
-		*/
-		if (xmlSaveFormatFileEnc(filename.c_str(), pxmlDoc, encod.c_str(), 1) < 0)
-			return false;
-
-		//记录保存xml的文件名
-		dbFileName = filename;
-	}
-	else {
-		dbFileName = "";
-	}
-	return true;
-}
-
-xmlNodePtr gpl::xml::LibXml::addNode(xmlNodePtr fatherNode, std::string name)
-{
-	if (!fatherNode || name.empty())
-		return NULL;
-
-	xmlNodePtr node = xmlNewChild(fatherNode, NULL, BAD_CAST name.c_str(), NULL);
-
-	return node;
-}
-
-bool gpl::xml::LibXml::addTab(std::string tab)
-{
-	//查找重名记录
-	if (findTab(tab))
-		return false;
-
-	if (addNode(root_node, tab))
-		return true;
-	else
-		return false;
-}
-
-bool gpl::xml::LibXml::delTab(std::string tab)
-{
-	xmlNodePtr node = findTab(tab);
-	//查找记录
-	if (!node)
-		return false;
-
-	xmlUnlinkNode(node);
-	xmlFreeNode(node);
-
-	return true;
-}
-
-bool gpl::xml::LibXml::editTabName(std::string tab_old, std::string tab_new)
-{
-	xmlNodePtr node;
-	//查找记录
-	if (!(node = findTab(tab_old)))
-		return false;
-
-	xmlNodeSetName(node, BAD_CAST tab_new.c_str());
-
-	return true;
-}
-
-bool gpl::xml::LibXml::addItem(std::string tab, std::string item, std::string content)
-{
-	xmlNodePtr tabnode = findTab(tab);
-	if (!tabnode)
-		return false;
-
-	//查找重名记录
-	xmlNodePtr node = findItemInTab(tab, item);
-	if (node)
-		return false;
-
-	node = addNode(tabnode, item);
-	xmlNodeSetContent(node, BAD_CAST content.c_str());
-
-	return true;
-}
-
-bool gpl::xml::LibXml::delItem(std::string tab, std::string item)
-{
-	xmlNodePtr node;
-	//查找记录
-	if (!(node = findItemInTab(tab, item)))
-		return false;
-
-	xmlUnlinkNode(node);
-	xmlFreeNode(node);
-
-	return true;
-}
-
-bool gpl::xml::LibXml::editItemName(std::string tab, std::string item_old, std::string item_new)
-{
-	xmlNodePtr node;
-	//查找记录
-	if (!(node = findItemInTab(tab, item_old)))
-		return false;
-
-	xmlNodeSetName(node, BAD_CAST item_new.c_str());
-
-	return true;
-}
-
-bool gpl::xml::LibXml::editItemContent(std::string tab, std::string item, std::string content_new)
-{
-	xmlNodePtr node;
-	//查找记录
-	if (!(node = findItemInTab(tab, item)))
-		return false;
-
-	xmlNodeSetContent(node, BAD_CAST content_new.c_str());
-
-	return true;
-}
-
-xmlNodePtr gpl::xml::LibXml::findNode(xmlNodePtr fatherNode, std::string name)
-{
-	xmlNodePtr node;
-
-	if (!fatherNode || name.empty())
-		return NULL;
-
-	for (node = fatherNode->children; node; node = node->next)
-	{
-		if (node->type != XML_ELEMENT_NODE)
-			continue;
-
-		if (0 == xmlStrcmp(node->name, BAD_CAST name.c_str()))
-			return node;
-	}
-	return NULL;
-}
-
-xmlNodePtr gpl::xml::LibXml::findTab(std::string tab)
-{
-	if (tab.empty())
-		return NULL;
-	return findNode(root_node, tab);
-}
-
-xmlNodePtr gpl::xml::LibXml::findItemInTab(std::string tab, std::string item)
-{
-	xmlNodePtr tabnode;
-	if (!(tabnode = findTab(tab)))
-		return NULL;
-
-	if (item.empty())
-		return NULL;
-
-	return findNode(tabnode, item);
-}
-
-xmlNodePtr gpl::xml::LibXml::findNodeNext(xmlNodePtr startNode, xmlNodePtr* ipc)
-{
-	if (!startNode || !ipc)
-		return NULL;
-
-	xmlNodePtr node = *ipc;
-
-	for (node = startNode; node; node = node->next)
-	{
-		if (node->type != XML_ELEMENT_NODE)
-			continue;
-
-		*ipc = node;
-		return node;
-	}
-	*ipc = NULL;
-	return NULL;
-}
-
-std::string gpl::xml::LibXml::getTabFirst(void)
-{
-	if (findNodeNext(root_node->children, &tab_ipc))
-		return getNodeName(tab_ipc);
-	else
-		return "";
-}
-std::string gpl::xml::LibXml::getTabNext()
-{
-	if (!tab_ipc)
-		return "";
-
-	if (findNodeNext(tab_ipc->next, &tab_ipc))
-		return getNodeName(tab_ipc);
-	else
-		return "";
-}
-std::string gpl::xml::LibXml::getItemInTabFirst(std::string tab)
-{
-	xmlNodePtr tabnode;
-	if (!(tabnode = findTab(tab)))
-		return "";
-
-	if (findNodeNext(tabnode->children, &item_ipc))
-		return getNodeName(item_ipc);
-	else
-		return "";
-}
-std::string gpl::xml::LibXml::getItemInTabNext()
-{
-	if (!item_ipc)
-		return "";
-
-	if (findNodeNext(item_ipc->next, &item_ipc))
-		return getNodeName(item_ipc);
-	else
-		return "";
-}
-std::string gpl::xml::LibXml::getContent(std::string tab, std::string item)
-{
-	xmlNodePtr node = findItemInTab(tab, item);
-	return getNodeContent(node);
-}
-
-std::string gpl::xml::LibXml::getNodeContent(xmlNodePtr node)
-{
-	if (!node)
-		return "";
-
-	char* str = (char*)xmlNodeGetContent(node);
-	if (str)
-		return str;
-	else
-		return "";
-}
-
-bool gpl::xml::LibXml::saveToFile(std::string encod/* = "UTF-8"*/, std::string filename/*=""*/, bool blankpad/*=true*/)
-{
-	int format = blankpad ? 1 : 0;
-
-	if (filename.empty())
-		filename = dbFileName;
-
-	if (filename.empty())
-		return false;
-
-	if (xmlSaveFormatFileEnc(filename.c_str(), pxmlDoc, encod.c_str(), format) < 0)
-		return false;
-
-	dbFileName = filename;
-	return true;
-}
-
-int gpl::xml::LibXml::getItemsCount(xmlNodePtr fatherNode)
-{
-	xmlNodePtr node;
-	int count = 0;
-
-	if (!fatherNode)
-		return -1;
-
-	for (node = fatherNode->children; node; node = node->next)
-	{
-		if (node->type != XML_ELEMENT_NODE)
-			continue;
-		count++;
-	}
-	return count;
-}
-
-int gpl::xml::LibXml::getTabsCount()
-{
-	return getItemsCount(root_node);
-}
-
-int gpl::xml::LibXml::getItemsCountInTab(std::string tab)
-{
-	xmlNodePtr tabnode;
-	if (!(tabnode = findTab(tab)))
-		return -1;
-
-	return getItemsCount(tabnode);
-}
-
-xmlNodePtr gpl::xml::LibXml::findNode(xmlNodePtr fatherNode, int index)
-{
-	xmlNodePtr node;
-	int i = -1;
-
-	if (!fatherNode)
-		return NULL;
-
-	for (node = fatherNode->children; node; node = node->next)
-	{
-		if (node->type != XML_ELEMENT_NODE)
-			continue;
-		i++;
-		if (i == index)
-			break;
-	}
-
-	if (node && i == index)
-		return node;
-	else
-		return NULL;
-
-}
-
-std::string gpl::xml::LibXml::getItemInTab(std::string tab, int index)
-{
-	xmlNodePtr tabnode;
-	if (!(tabnode = findTab(tab)))
-		return "";
-
-	xmlNodePtr node = findNode(tabnode, index);
-	return getNodeName(node);
-}
-
-std::string gpl::xml::LibXml::getTab(int index)
-{
-	xmlNodePtr node = findNode(root_node, index);
-	return getNodeName(node);
-}
-
-std::string gpl::xml::LibXml::getNodeName(xmlNodePtr node)
-{
-	if (!node)
-		return "";
-
-	char* str = (char*)node->name;
-	if (str)
-		return str;
-	else
-		return "";
-}
 #ifndef NULL
 #define NULL 0
 #endif
@@ -1314,24 +908,29 @@ void gpl::xml::ltoa(const long& l, std::string& str)
 	return;
 }
 
-bool gpl::xml::createXml(std::string encod/* = "UTF-8"*/, std::string filename /*= ""*/)
+bool gpl::xml::createXml(std::string rootnode,std::string encod/* = "UTF-8"*/, std::string filename /*= ""*/)
 {
-	return m_xml->newXMLDoc(encod,filename);
+	return true;
 }
 
 bool gpl::xml::addANode(std::string node)
 {
-	return m_xml->addTab(node);
+	return true;
 }
 
 bool gpl::xml::addAItem(std::string node, std::string item, std::string content)
 {
-	return m_xml->addItem(node, item, content);
+	return true;
 }
 
 bool gpl::xml::saveToFile(std::string encod /*= "UTF-8"*/, std::string filename /*= ""*/, bool blankpad /*= true*/)
 {
-	return m_xml->saveToFile(encod,filename, blankpad);
+	return true;
+}
+
+bool gpl::xml::addattribute(std::string node, std::string attriname, std::string attrivalue)
+{
+	return true;
 }
 
 /*void XmlApi::setOnlyGetEntityNameFlag(bool b)

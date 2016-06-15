@@ -31,23 +31,24 @@ int main(int argc, char **argv)
 	bool rv;
 	xml xmlapi;
 
-	rv = xmlapi.createXml();
-	rv = xmlapi.addANode("t111");
-	rv = xmlapi.addANode("t222");
-	rv = xmlapi.addANode("t333");
-	rv = xmlapi.addANode("t444");
-	rv = xmlapi.addANode("t555");
-	rv = xmlapi.addANode("t666");
-
-	rv = xmlapi.addAItem("t111", "aaa", "000");
-	rv = xmlapi.addAItem("t333", "vvv", "000");
-	rv = xmlapi.addAItem("t222", "ddd", "000");
-	rv = xmlapi.addAItem("t222", "xxx", "000");
-	rv = xmlapi.addAItem("t444", "aaa", "000");
-	rv = xmlapi.addAItem("t333", "sss", "000");
-	rv = xmlapi.addAItem("t444", "rrr", "000");
-	rv = xmlapi.addAItem("t555", "eee", "sss");
-	rv = xmlapi.addAItem("t111", "yyy", "000");
+	rv = xmlapi.createXml("Root","UTF-8", "a.xml");
+	rv = xmlapi.addANode("a");
+	rv = xmlapi.addAItem("a", "aaa", "000");
+	rv = xmlapi.addAItem("a", "vvv", "000");
+	rv = xmlapi.addANode("a");
+	rv = xmlapi.addAItem("a", "ddd", "000");
+	rv = xmlapi.addAItem("a", "xxx", "000");
+	rv = xmlapi.addANode("a");
+	rv = xmlapi.addAItem("a", "aaa", "000");
+	rv = xmlapi.addAItem("a", "sss", "000");
+	rv = xmlapi.addANode("a");
+	rv = xmlapi.addAItem("a", "rrr", "000");
+	rv = xmlapi.addAItem("a", "eee", "sss");
+	rv = xmlapi.addANode("a");
+	rv = xmlapi.addAItem("a", "yyy", "000");
+	rv = xmlapi.addANode("a");
+	
+	
 	xmlapi.saveToFile("UTF-8", "a.xml",true);
 	return 1;
 }
