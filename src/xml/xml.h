@@ -149,61 +149,61 @@ namespace gpl
 		*  @brief       打开并解析xml文档
 		*  @param[in]   fileName[string]解析xml文档路径
 		*  @param[int]	blank[int] 模式
-						- 1:保留空格;
-						- 0:去掉空格
+		- 1:保留空格;
+		- 0:去掉空格
 		*  @return		返回结果
-						- true:打开成功;
-						- false:打开失败;
+		- true:打开成功;
+		- false:打开失败;
 		*/
-		bool open(const std::string& fileName, int blank = 1);
+		bool openXPath(const std::string& fileName, int blank = 1);
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       打开并解析xml文档
 		*  @param[in]   fileName[char*]解析xml文档路径
 		*  @param[int]	blank[int]
-						- 1:保留空格;
-						- 0:去掉空格
+		- 1:保留空格;
+		- 0:去掉空格
 		*  @return		返回结果
-						- true:打开成功;
-						- false:打开失败;
+		- true:打开成功;
+		- false:打开失败;
 		*/
-		bool open(const char* fileName, int blank = 1);
+		bool openXPath(const char* fileName, int blank = 1);
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       打开并解析缓冲中的xml文档
 		*  @param[in]   buffer[char*]内存是buffer
 		*  @param[in]	size[int]buffer大小
 		*  @param[int]	blank[int]
-						- 1:保留空格;
-						- 0:去掉空格
+		- 1:保留空格;
+		- 0:去掉空格
 		*  @return		返回结果
-						- true:打开成功;
-						- false:打开失败;
+		- true:打开成功;
+		- false:打开失败;
 		*/
-		bool openBuffer(const char* buffer, int size = -1, int blank = 1);
+		bool openBufferXPath(const char* buffer, int size = -1, int blank = 1);
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       关闭并释放xml文档
 		*/
-		void close();
+		void closeXPath();
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       设置XPATH
 		*  @param[in]   xpath[char*]XPATH的内容
 		*  @return		返回结果
-						- true:设置成功;
-						- false:设置失败;
+		- true:设置成功;
+		- false:设置失败;
 		*/
 		bool setXPath(const char* xpath);
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       返回当前XPATH所查询的结果集
-		*  @param[out]  resultSet[multimap<string, string>]XPATH所查询的结果集	
-						- 第一个string为节点名称,属性名称,text,comment中的一种
-						- 第二个string为节点名称对应的文本节点内容,属性名对应的属性内容,注释内容中的一种
+		*  @param[out]  resultSet[multimap<string, string>]XPATH所查询的结果集
+		- 第一个string为节点名称,属性名称,text,comment中的一种
+		- 第二个string为节点名称对应的文本节点内容,属性名对应的属性内容,注释内容中的一种
 		*  @return		返回结果
-						- true:成功;
-						- false:失败;
+		- true:成功;
+		- false:失败;
 		*/
 		bool getXPathResultSet(std::multimap<std::string, std::string>& resultSet);
 		/**
@@ -211,11 +211,11 @@ namespace gpl
 		*  @brief       返回当前XPATH所查询的结果集
 		*  @param[in]	xpath[char*]XPATH的内容
 		*  @param[out]  resultSet[multimap<string, string>]XPATH所查询的结果集
-						- 第一个string为节点名称,属性名称,text,comment中的一种
-						- 第二个string为节点名称对应的文本节点内容,属性名对应的属性内容,注释内容中的一种
+		- 第一个string为节点名称,属性名称,text,comment中的一种
+		- 第二个string为节点名称对应的文本节点内容,属性名对应的属性内容,注释内容中的一种
 		*  @return		返回结果
-						- true:成功;
-						- false:失败;
+		- true:成功;
+		- false:失败;
 		*/
 		bool getXPathResultSet(const char* xpath, std::multimap<std::string, std::string>& resultSet);
 		/**
@@ -223,29 +223,29 @@ namespace gpl
 		*  @brief       读取指定的实体相关属性
 		*  @param[in]	entName[string]要查询的实体名
 		*  @param[out]  props[map<string, string>]entName对应的实体属性,包括：
-						- ETYPE:  实体的类型
-						- ID:     PUBLIC的外部标识
-						- SYSTEM: PUBLIC,SYSTEM实体的url路径
-						- ORIG:   实体引用没有被替换的内容
-						- CONTENT:没有解析时的内容或数据
+		- ETYPE:  实体的类型
+		- ID:     PUBLIC的外部标识
+		- SYSTEM: PUBLIC,SYSTEM实体的url路径
+		- ORIG:   实体引用没有被替换的内容
+		- CONTENT:没有解析时的内容或数据
 		*  @return		返回结果
-						- true:成功;
-						- false:失败;
+		- true:成功;
+		- false:失败;
 		*/
 		bool getEntityValue(const std::string& entName, std::map<std::string, std::string>& props);
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在当前XPATH下面插入一个子节点.
-						- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认插入第一个位置的下面,并且子节点在所有子节点的最后面,否则就插入指定的位置下面
-						@code
-						当前的XPATH是"/EXAMPLE/head"
-						insertNodeByXPath("subhead","hello");
-						<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE><head><subhead>hello</subhead></head></EXAMPLE>
-						@endcode
-						- 若该节点名称为空则插入一个文本节点(即nodeValue),若已经存在文本节点,则会追加到第一个文本节点上,然后返回true;
-						- 若该节点名称为"<![CDATA[]]>"则插入一个CDATA段的字符节点(即nodeValue),若已经存在CDATA段,则会追加到第一个文本节点上,然后返回true;
+		- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认插入第一个位置的下面,并且子节点在所有子节点的最后面,否则就插入指定的位置下面
+		@code
+		当前的XPATH是"/EXAMPLE/head"
+		insertNodeByXPath("subhead","hello");
+		<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE><head><subhead>hello</subhead></head></EXAMPLE>
+		@endcode
+		- 若该节点名称为空则插入一个文本节点(即nodeValue),若已经存在文本节点,则会追加到第一个文本节点上,然后返回true;
+		- 若该节点名称为"<![CDATA[]]>"则插入一个CDATA段的字符节点(即nodeValue),若已经存在CDATA段,则会追加到第一个文本节点上,然后返回true;
 		*  @param[in]	nodeName[char*]节点名称
 		*  @param[in]	nodeValue[char*]节点的值
 		*  @param[in]	length[int]nodeValue的长度
@@ -255,15 +255,15 @@ namespace gpl
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在指定的XPATH下面插入一个子节点.
-						- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认插入第一个位置的下面,并且子节点在所有子节点的最后面,否则就插入指定的位置下面
-						@code
-						insertNodeByXPath("/EXAMPLE/head","subhead","hello")
-						<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE><head><subhead>hello</subhead></head></EXAMPLE>
-						@endcode
-						- 若该节点名称为空则插入一个文本节点(即nodeValue),若已经存在文本节点,则会追加到第一个文本节点上,然后返回true;
-						- 若该节点名称为"<![CDATA[]]>"则插入一个CDATA段的字符节点(即nodeValue),若已经存在CDATA段,则会追加到第一个文本节点上,然后返回true;
+		- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认插入第一个位置的下面,并且子节点在所有子节点的最后面,否则就插入指定的位置下面
+		@code
+		insertNodeByXPath("/EXAMPLE/head","subhead","hello")
+		<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE><head><subhead>hello</subhead></head></EXAMPLE>
+		@endcode
+		- 若该节点名称为空则插入一个文本节点(即nodeValue),若已经存在文本节点,则会追加到第一个文本节点上,然后返回true;
+		- 若该节点名称为"<![CDATA[]]>"则插入一个CDATA段的字符节点(即nodeValue),若已经存在CDATA段,则会追加到第一个文本节点上,然后返回true;
 		*  @param[in]	xpath[char*]XPATH的内容
 		*  @param[in]	nodeName[char*]节点名称
 		*  @param[in]	nodeValue[char*]节点的值
@@ -274,13 +274,13 @@ namespace gpl
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在当前XPATH下面插入一个节点的属性.
-						@code
-						当前的XPATH是"/EXAMPLE/head"
-						insertPropertyByXPath("subhead","hello");
-						<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE><head subhead="hello"></head></EXAMPLE>
-						@endcode
+		@code
+		当前的XPATH是"/EXAMPLE/head"
+		insertPropertyByXPath("subhead","hello");
+		<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE><head subhead="hello"></head></EXAMPLE>
+		@endcode
 		*  @param[in]	propName[char*]属性名称
 		*  @param[in]	propValue[char*]属性的值
 		*  @param[in]   length[int]propValue的长度
@@ -290,12 +290,12 @@ namespace gpl
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在指定的XPATH下面插入一个节点的属性.
-						@code
-						insertPropertyByXPath("/EXAMPLE/head","subhead","hello");
-						<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE><head subhead="hello"></head></EXAMPLE>
-						@endcode
+		@code
+		insertPropertyByXPath("/EXAMPLE/head","subhead","hello");
+		<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE><head subhead="hello"></head></EXAMPLE>
+		@endcode
 		*  @param[in]	xpath[char*]XPATH的内容
 		*  @param[in]	propName[char*]属性名称
 		*  @param[in]	propValue[char*]属性值
@@ -306,31 +306,31 @@ namespace gpl
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在当前XPATH下面更新一个节点.
-						- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认更新第一个位置的节点,否则就插入指定的节点
-						@code
-						当前的XPATH是"/EXAMPLE/head"
-						updateNodeByXPath("head","hello");
-						<?xml version="1.0" ><EXAMPLE><head>hhhhh</head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE><head>hello</head></EXAMPLE>
-						@endcode
+		- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认更新第一个位置的节点,否则就插入指定的节点
+		@code
+		当前的XPATH是"/EXAMPLE/head"
+		updateNodeByXPath("head","hello");
+		<?xml version="1.0" ><EXAMPLE><head>hhhhh</head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE><head>hello</head></EXAMPLE>
+		@endcode
 		*  @param[in]	nodeName[char*]节点名称.为空时保留原来的节点名称,否则使用nodeName覆盖旧名称
 		*  @param[in]	nodeValue[char*]节点的值
 		*  @param[in]   length[int]nodeValue的长度
 		*  @return		- 更新节点成功返回true,否则返回false;
-						- 若该节点名称不存在,则返回false;
+		- 若该节点名称不存在,则返回false;
 		*/
 		bool updateNodeByXPath(const char* nodeName, const char* nodeValue, int length = -1);
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在指定的XPATH下面更新一个节点.
-						- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认更新第一个位置的节点,否则就插入指定的节点
-						@code
-						updateNodeByXPath("/EXAMPLE/head","head","hello");
-						<?xml version="1.0" ><EXAMPLE><head>hhhhh</head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE><head>hello</head></EXAMPLE>
-						@endcode
+		- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认更新第一个位置的节点,否则就插入指定的节点
+		@code
+		updateNodeByXPath("/EXAMPLE/head","head","hello");
+		<?xml version="1.0" ><EXAMPLE><head>hhhhh</head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE><head>hello</head></EXAMPLE>
+		@endcode
 		*  @param[in]	xpath[char*]XPATH的内容
 		*  @param[in]	nodeName[char*]节点名称.为空时保留原来的节点名称,否则使用nodeName覆盖旧名称
 		*  @param[in]	nodeValue[char*]节点的值.
@@ -342,13 +342,13 @@ namespace gpl
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在当前XPATH下面更新一个节点的属性.
-						@code
-						当前的XPATH是"/EXAMPLE/head"
-						updatePropertyByXPath("subhead","hello");
-						<?xml version="1.0" ><EXAMPLE><head subhead="hhhhh"></head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE><head subhead="hello"></head></EXAMPLE>
-						@endcode
+		@code
+		当前的XPATH是"/EXAMPLE/head"
+		updatePropertyByXPath("subhead","hello");
+		<?xml version="1.0" ><EXAMPLE><head subhead="hhhhh"></head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE><head subhead="hello"></head></EXAMPLE>
+		@endcode
 		*  @param[in]	propName[char*]属性名称
 		*  @param[in]	propValue[char*]属性的值
 		*  @param[in]   length[int]propValue的长度
@@ -358,12 +358,12 @@ namespace gpl
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在指定的XPATH下面更新一个节点的属性.
-						@code
-						updatePropertyByXPath("/EXAMPLE/head","subhead","hello");
-						<?xml version="1.0" ><EXAMPLE><head subhead="hhhhh"></head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE><head subhead="hello"></head></EXAMPLE>
-						@endcode
+		@code
+		updatePropertyByXPath("/EXAMPLE/head","subhead","hello");
+		<?xml version="1.0" ><EXAMPLE><head subhead="hhhhh"></head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE><head subhead="hello"></head></EXAMPLE>
+		@endcode
 		*  @param[in]	xpath[char*]XPATH的内容
 		*  @param[in]	propName[char*]属性名称
 		*  @param[in]	propValue[char*]属性的值
@@ -374,27 +374,27 @@ namespace gpl
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在当前XPATH下面删除最后一个节点树.
-						- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认删除第一个位置的节点树,否则就插入指定的节点树
-						@code
-						当前的XPATH是"/EXAMPLE/head"
-						eraseNodeByXPath();
-						<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE></EXAMPLE>
-						@endcode
+		- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认删除第一个位置的节点树,否则就插入指定的节点树
+		@code
+		当前的XPATH是"/EXAMPLE/head"
+		eraseNodeByXPath();
+		<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE></EXAMPLE>
+		@endcode
 		*  @return		删除成功返回true,否则返回false;若该节点树不存在,返回false!
 		*/
 		bool eraseNodeByXPath();
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在指定的XPATH下面删除最后一个节点树.
-						- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认删除第一个位置的节点树,否则就插入指定的节点树
-						@code
-						eraseNodeByXPath("/EXAMPLE/head");
-						<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE></EXAMPLE>
-						@endcode
+		- 若该XPATH下有多个相同的节点名称,并且没有指定位置,那么将默认删除第一个位置的节点树,否则就插入指定的节点树
+		@code
+		eraseNodeByXPath("/EXAMPLE/head");
+		<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE></EXAMPLE>
+		@endcode
 		*  @param[in]	xpath[char*]XPATH的内容
 		*  @return		删除成功返回true,否则返回false;若该节点树不存在,返回false!
 		*/
@@ -402,13 +402,13 @@ namespace gpl
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在当前XPATH下面删除一个节点的属性
-						@code
-						当前的XPATH是"/EXAMPLE/head"
-						erasePropertyByXPath("subhead");
-						<?xml version="1.0" ><EXAMPLE><head subhead="head"></head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
-						@endcode
+		@code
+		当前的XPATH是"/EXAMPLE/head"
+		erasePropertyByXPath("subhead");
+		<?xml version="1.0" ><EXAMPLE><head subhead="head"></head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
+		@endcode
 		*  @param[in]	propName[char*]属性名称
 		*  @return		删除成功返回true,否则返回false;若该属性不存在,返回false!
 		*/
@@ -416,12 +416,12 @@ namespace gpl
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       在指定的XPATH下面删除一个节点的属性.
-						@code
-						erasePropertyByXPath("/EXAMPLE/head","subhead");
-						<?xml version="1.0" ><EXAMPLE><head subhead="head"></head></EXAMPLE>
-						结果就是:
-						<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
-						@endcode
+		@code
+		erasePropertyByXPath("/EXAMPLE/head","subhead");
+		<?xml version="1.0" ><EXAMPLE><head subhead="head"></head></EXAMPLE>
+		结果就是:
+		<?xml version="1.0" ><EXAMPLE><head></head></EXAMPLE>
+		@endcode
 		*  @param[in]	xpath[char*]XPATH的内容
 		*  @param[in]	propName[char*]属性名称
 		*  @return		删除成功返回true,否则返回false;若该属性不存在,返回false!
@@ -436,7 +436,7 @@ namespace gpl
 		*  @param[in]	format[int]0:不进行格式输出;1:格式输出,默认为1
 		*  @return		成功返回true,否则false;
 		*/
-		bool saveXmlToFile(const char* fname = "", const char* encoding = "", int format = 1);
+		bool saveXmlToFileXPath(const char* fname = "", const char* encoding = "", int format = 1);
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       保存xml数据输出到buff内存中
@@ -445,20 +445,69 @@ namespace gpl
 		*  @param[in]	format[int]0:不进行格式输出;1:格式输出,默认为1
 		*  @return		成功返回true,否则false;
 		*/
-		bool saveXmlToBuffer(std::string& buffStr, const char* encoding = "", int format = 1);
+		bool saveXmlToBufferXPath(std::string& buffStr, const char* encoding = "", int format = 1);
 		/**
 		*  @date        2016/06/14 13:47
 		*  @brief       将xml文件导出到指定的文件流
 		*  @param[in]	f[FILE*]文件指针,可以是stdin,stdout,stderr
 		*  @return		成功返回true,否则false;
 		*/
-		bool dump(FILE* f = stdout);
+		bool dumpXPath(FILE* f = stdout);
 		/**
 		* 设置在读取数据时仅仅读取实体名字的标记.
 		*@param b true:仅仅读取实体名字;false:读取实体扩展后的内容
 		*@return 成功返回true,否则false;
 		*/
 		//void setOnlyGetEntityNameFlag(bool b);
+		/**
+			*  @date        2016/06/15 13:28
+			*  @brief       创建xml
+			*  @param[in]   filname[string]创建xml的名字,如果这里为空，那么在saveToFile里面一定要写名字
+			*  @param[in]   encod[string]创建xml的编码格式，默认utf-8
+			*  @return      成功返回true，否则为false
+			*  @pre         创建一个xml DOC的一个指针
+			*  @remarks     评论
+			*  @see         gpl::xml::saveToFile
+			*  @test        测试
+			*/
+		bool createXml(std::string encod = "UTF-8", std::string filename = "");
+		/**
+			*  @date        2016/06/15 13:41
+			*  @brief       添加一个节点
+			*  @param[in]   node[string]节点名字
+			*  @return      成功返回true，否则为false
+			*  @pre         添加一个以node为名字的节点
+			*  @remarks     评论
+			*  @see         参考内容
+			*  @test        测试
+			*/
+		bool addANode(std::string node);
+		/**
+			*  @date        2016/06/15 13:43
+			*  @brief       为节点添加一个子节点
+			*  @param[in]   node[string]一个以存在的节点名字，如果这个节点不存在返回false
+			*  @param[in]   item[string]添加的子节点，如果这个子节点存在返回false
+			*  @param[in]   content[string]子节点内存
+			*  @return      成功返回true，否则为false
+			*  @pre         段落
+			*  @remarks     评论
+			*  @see         参考内容
+			*  @test        测试
+			*/
+		bool addAItem(std::string node, std::string item, std::string content);
+		/**
+			*  @date        2016/06/15 14:24
+			*  @brief       保存xml到文件
+			*  @param[in]   encod[string]保存xml的编码
+			*  @param[in]   filename[string]保存xml的文件名字，在createXml中声明了这里可以为空
+			*  @param[in]   blankpad[bool]是否进行格式化输出
+			*  @return      成功返回true，否则为false
+			*  @pre         段落
+			*  @remarks     评论
+			*  @see         参考内容
+			*  @test        测试
+			*/
+		bool saveToFile(std::string encod = "UTF-8", std::string filename = "", bool blankpad = true);
 	protected:
 		class LibXml;
 		LibXml* m_xml;

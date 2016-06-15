@@ -55,7 +55,7 @@ public:
 	bool   getDumpAttribute(xmlAttrPtr attrPtr, std::multimap<std::string, std::string>&resultSet);
 
 	bool openXMLDoc(std::string filename);
-	bool newXMLDoc(std::string filename = "");
+	bool newXMLDoc(std::string encod = "UTF-8", std::string filename = "");
 
 	bool addTab(std::string tab);
 	bool editTabName(std::string tab_old, std::string tab_new);
@@ -80,7 +80,7 @@ public:
 
 	std::string getContent(std::string tab, std::string item);
 
-	bool saveToFile(std::string filename = "", bool blankpad = true);
+	bool saveToFile(std::string encod = "UTF-8", std::string filename = "", bool blankpad = true);
 private:
 	int getItemsCount(xmlNodePtr fatherNode);
 	xmlNodePtr addNode(xmlNodePtr fatherNode, std::string name);
@@ -321,7 +321,7 @@ bool gpl::xml::LibXml::openXMLDoc(std::string filename)
 	return true;
 }
 
-bool gpl::xml::LibXml::newXMLDoc(std::string filename /*= ""*/)
+bool gpl::xml::LibXml::newXMLDoc(std::string encod/*="UTF-8"*/, std::string filename /*= ""*/)
 {
 	/*
 	* Creates a new document, a node and set it as a root node
@@ -335,7 +335,7 @@ bool gpl::xml::LibXml::newXMLDoc(std::string filename /*= ""*/)
 		/*
 		* Dumping document to stdio or file
 		*/
-		if (xmlSaveFormatFileEnc(filename.c_str(), pxmlDoc, "UTF-8", 1) < 0)
+		if (xmlSaveFormatFileEnc(filename.c_str(), pxmlDoc, encod.c_str(), 1) < 0)
 			return false;
 
 		//记录保存xml的文件名
@@ -560,7 +560,7 @@ std::string gpl::xml::LibXml::getNodeContent(xmlNodePtr node)
 		return "";
 }
 
-bool gpl::xml::LibXml::saveToFile(std::string filename, bool blankpad)
+bool gpl::xml::LibXml::saveToFile(std::string encod/* = "UTF-8"*/, std::string filename/*=""*/, bool blankpad/*=true*/)
 {
 	int format = blankpad ? 1 : 0;
 
@@ -570,7 +570,7 @@ bool gpl::xml::LibXml::saveToFile(std::string filename, bool blankpad)
 	if (filename.empty())
 		return false;
 
-	if (xmlSaveFormatFileEnc(filename.c_str(), pxmlDoc, "UTF-8", format) < 0)
+	if (xmlSaveFormatFileEnc(filename.c_str(), pxmlDoc, encod.c_str(), format) < 0)
 		return false;
 
 	dbFileName = filename;
@@ -671,7 +671,7 @@ gpl::xml::xml()
 ///析构函数
 gpl::xml::~xml()
 {
-	close();
+	closeXPath();
 	if (m_xml != 0)
 	{
 		delete m_xml;
@@ -683,15 +683,15 @@ gpl::xml::~xml()
 *@param fileName
 *@return true:打开成功;false:打开失败;
 */
-bool gpl::xml::open(const std::string& fileName, int blank /*= 1*/)
+bool gpl::xml::openXPath(const std::string& fileName, int blank /*= 1*/)
 {
-	return open(fileName.c_str(), blank);
+	return openXPath(fileName.c_str(), blank);
 }
 
-bool gpl::xml::open(const char* fileName, int blank /*= 1*/)
+bool gpl::xml::openXPath(const char* fileName, int blank /*= 1*/)
 {
 	if (m_xml->doc != NULL)
-		close();
+		closeXPath();
 	xmlLoadExtDtdDefaultValue |= XML_DETECT_IDS;
 	xmlLoadExtDtdDefaultValue |= XML_COMPLETE_ATTRS;
 	xmlSubstituteEntitiesDefaultValue = 1;
@@ -717,7 +717,7 @@ bool gpl::xml::open(const char* fileName, int blank /*= 1*/)
 	return true;
 }
 
-bool gpl::xml::openBuffer(const char* buffer, int size /*= -1*/, int blank /*= 1*/)
+bool gpl::xml::openBufferXPath(const char* buffer, int size /*= -1*/, int blank /*= 1*/)
 {
 	int len = strlen(buffer);
 	if (size == 0 || len < size)
@@ -728,7 +728,7 @@ bool gpl::xml::openBuffer(const char* buffer, int size /*= -1*/, int blank /*= 1
 	}
 	///////////////////////////////////////////////////////  
 	if (m_xml->doc != NULL)
-		close();
+		closeXPath();
 	xmlLoadExtDtdDefaultValue |= XML_DETECT_IDS;
 	xmlLoadExtDtdDefaultValue |= XML_COMPLETE_ATTRS;
 	xmlSubstituteEntitiesDefaultValue = 1;
@@ -757,7 +757,7 @@ bool gpl::xml::openBuffer(const char* buffer, int size /*= -1*/, int blank /*= 1
 /**
 *关闭并释放xml文档
 */
-void gpl::xml::close()
+void gpl::xml::closeXPath()
 {
 	if (m_xml->resource != NULL)
 	{
@@ -1255,7 +1255,7 @@ bool gpl::xml::erasePropertyByXPath(const char* xpath, const char* propName)
 	return erasePropertyByXPath(propName);
 }
 
-bool gpl::xml::saveXmlToFile(const char* fname /*= ""*/, const char* encoding /*= ""*/, int format /*= 1*/)
+bool gpl::xml::saveXmlToFileXPath(const char* fname /*= ""*/, const char* encoding /*= ""*/, int format /*= 1*/)
 {
 	//xmlKeepBlanksDefault(0);
 	const char* fPtr = ((strlen(fname) == 0) ? m_fileName.c_str() : fname);
@@ -1274,7 +1274,7 @@ bool gpl::xml::saveXmlToFile(const char* fname /*= ""*/, const char* encoding /*
 	return true;
 }
 
-bool gpl::xml::saveXmlToBuffer(std::string& buffStr, const char* encoding /*= ""*/, int format /*= 1*/)
+bool gpl::xml::saveXmlToBufferXPath(std::string& buffStr, const char* encoding /*= ""*/, int format /*= 1*/)
 {
 	//xmlKeepBlanksDefault(0);
 	xmlChar* xmlBufferPtr = NULL;
@@ -1297,7 +1297,7 @@ bool gpl::xml::saveXmlToBuffer(std::string& buffStr, const char* encoding /*= ""
 	return true;
 }
 
-bool gpl::xml::dump(FILE* f /*= stdout*/)
+bool gpl::xml::dumpXPath(FILE* f /*= stdout*/)
 {
 	if (xmlDocDump(f, m_xml->doc) < 0)
 		return false;
@@ -1313,6 +1313,27 @@ void gpl::xml::ltoa(const long& l, std::string& str)
 	str = buff;
 	return;
 }
+
+bool gpl::xml::createXml(std::string encod/* = "UTF-8"*/, std::string filename /*= ""*/)
+{
+	return m_xml->newXMLDoc(encod,filename);
+}
+
+bool gpl::xml::addANode(std::string node)
+{
+	return m_xml->addTab(node);
+}
+
+bool gpl::xml::addAItem(std::string node, std::string item, std::string content)
+{
+	return m_xml->addItem(node, item, content);
+}
+
+bool gpl::xml::saveToFile(std::string encod /*= "UTF-8"*/, std::string filename /*= ""*/, bool blankpad /*= true*/)
+{
+	return m_xml->saveToFile(encod,filename, blankpad);
+}
+
 /*void XmlApi::setOnlyGetEntityNameFlag(bool b)
 {
 m_xml->isOnlyEntityName=b;
