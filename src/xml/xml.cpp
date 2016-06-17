@@ -67,16 +67,10 @@ gpl::xml::LibXml::LibXml()
 	doc = 0;
 	context = 0;
 	resource = 0;
-	dbFileName.clear();
-	pxmlDoc = NULL;
-	tab_ipc = NULL;
-	item_ipc = NULL;
 }
 
 gpl::xml::LibXml::~LibXml()
 {
-	if (pxmlDoc)
-		xmlFreeDoc(pxmlDoc);
 }
 /**
 *去除字符串两边的空格,回车换行,TAB

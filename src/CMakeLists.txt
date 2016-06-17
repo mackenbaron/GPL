@@ -4,5 +4,7 @@ add_subdirectory(util)
 add_subdirectory(log)
 #加入xml目录
 add_subdirectory(xml)
+#加入json目录
+add_subdirectory(json)
 
 
