@@ -21,17 +21,17 @@ namespace gpl
 		*  @date        2016/06/17 15:35
 		*  @class       json
 		*  @brief       对josn操作的封装
-		*  @note		json的格式详解 
-						- json的详解地址：
-							- 1. http://www.json.org/json-zh.html json详解
-							- 2. https://www.reddit.com/  json网站
-							- 3. https://api.reddit.com/ json测试数据\n
+		*  @note		json的格式详解
+		- json的详解地址：
+		- 1. http://www.json.org/json-zh.html json详解
+		- 2. https://www.reddit.com/  json网站
+		- 3. https://api.reddit.com/ json测试数据\n
 		json格式详解
-		*  @code			
+		*  @code
 		JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。
 		JSON建构于两种结构：
-			- 名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（record），结构（struct），字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。
-			- 值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。
+		- 名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（record），结构（struct），字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。
+		- 值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。
 		这些都是常见的数据结构。事实上大部分现代计算机语言都以某种形式支持它们。这使得一种数据格式在同样基于这些结构的编程语言之间交换成为可能。
 		*  @endcode
 		json常用的格式
@@ -45,7 +45,7 @@ namespace gpl
 		- 空白可以加入到任何符号之间
 		*  @endcode
 		*  @attention   注意
-		*  @bug			
+		*  @bug
 		*  @warning     警告
 		*/
 	class json
@@ -61,9 +61,90 @@ namespace gpl
 		*  @brief       析构函数
 		*/
 		virtual ~json();
-
+		/**
+			*  @date        2016/06/21 18:01
+			*  @brief       解析json
+			*  @param[in]   filename[string]json文件路径
+			*  @return      成功返回true，否则为false
+			*  @pre         段落
+			*  @remarks     评论
+			*  @see         参考内容
+			*  @test        测试
+			*/
+		bool parseJson(std::string filename);
+		/**
+		*  @date        2016/06/21 18:01
+		*  @brief       解析json
+		*  @param[in]   jsonbuf[char*]json内存
+		*  @return      成功返回true，否则为false
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool parseJson(char* jsonbuf);
+		/**
+			*  @date        2016/06/21 18:02
+			*  @brief       获取json数组对像的大小
+			*  @param[in]   par[string]要解析数据从root开始的路径
+			*  @return      返回数组大小
+			*  @pre         段落
+			*  @remarks     评论
+			*  @see         参考内容
+			*  @test        测试
+			*/
+		int getArraySize(std::string par);
+		/**
+			*  @date        2016/06/21 18:04
+			*  @brief       返回指定路径下面的数据
+			*  @param[in]   par[string]要解析数据从root开始的路径
+			*  @param[out]  date[int]返回int的数据
+			*  @return      void
+			*  @pre         段落
+			*  @remarks     评论
+			*  @see         参考内容
+			*  @test        测试
+			*/
+		void getItemDate(int& date, std::string par);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       返回指定路径下面的数据
+		*  @param[in]   par[string]要解析数据从root开始的路径
+		*  @param[out]  date[string]返回string的数据
+		*  @return      void
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		void getItemDate(std::string &date, std::string par);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       返回指定路径下面的数据
+		*  @param[in]   par[string]要解析数据从root开始的路径
+		*  @param[out]  date[bool]返回bool的数据
+		*  @return      void
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		void getItemDate(bool &date, std::string par);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       返回指定路径下面的数据
+		*  @param[in]   par[string]要解析数据从root开始的路径
+		*  @param[out]  date[double]返回double的数据
+		*  @return      void
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		void getItemDate(double &date, std::string par);
 	private:
-
+		class LibJson;
+		LibJson* m_json;
 	};
 
 }
