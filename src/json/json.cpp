@@ -34,12 +34,12 @@ gpl::json::~json()
 	}
 }
 
-bool gpl::json::parseJson(std::string filename)
+bool gpl::json::parseJson(std::string filename, int encoded)
 {
 	return true;
 }
 
-bool gpl::json::parseJson(char* jsonbuf)
+bool gpl::json::parseJson(char* jsonbuf, int encoded)
 {
 	return true;
 }
@@ -52,6 +52,26 @@ int gpl::json::getArraySize(std::string par)
 void gpl::json::getItemDate(int& date, std::string par)
 {
 
+}
+
+std::string gpl::json::readFile(std::string filename)
+{
+	std::string src = "";
+	FILE *fp;
+	if (NULL == (fp = fopen(filename.c_str(), "r")))
+	{
+		src = "{\"Error\":\"Open json file Error\"}";
+		return src;
+	}
+
+	char ch;
+	while (EOF != (ch = fgetc(fp)))
+	{
+		src.push_back(ch);
+	}
+	fclose(fp);
+
+	return src;
 }
 
 void gpl::json::getItemDate(std::string &date, std::string par)

@@ -65,24 +65,26 @@ namespace gpl
 			*  @date        2016/06/21 18:01
 			*  @brief       解析json
 			*  @param[in]   filename[string]json文件路径
+			*  @param[in]   encoded[int]编码方式 - 1为Unicode编码 - 0为utf-8编码（默认）
 			*  @return      成功返回true，否则为false
 			*  @pre         段落
 			*  @remarks     评论
 			*  @see         参考内容
 			*  @test        测试
 			*/
-		bool parseJson(std::string filename);
+		bool parseJson(std::string filename,int encoded);
 		/**
 		*  @date        2016/06/21 18:01
 		*  @brief       解析json
 		*  @param[in]   jsonbuf[char*]json内存
+		*  @param[in]   encoded[int]编码方式 - 1为Unicode编码 - 0为utf-8编码（默认）
 		*  @return      成功返回true，否则为false
 		*  @pre         段落
 		*  @remarks     评论
 		*  @see         参考内容
 		*  @test        测试
 		*/
-		bool parseJson(char* jsonbuf);
+		bool parseJson(char* jsonbuf, int encoded);
 		/**
 			*  @date        2016/06/21 18:02
 			*  @brief       获取json数组对像的大小
@@ -142,6 +144,18 @@ namespace gpl
 		*  @test        测试
 		*/
 		void getItemDate(double &date, std::string par);
+	private:
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       读取文件数据
+		*  @param[in]   filename[string]文件路径
+		*  @return      文件内容，为字符类型（经过转码的)
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		std::string readFile(std::string filename);
 	private:
 		class LibJson;
 		LibJson* m_json;
