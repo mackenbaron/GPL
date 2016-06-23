@@ -4,7 +4,7 @@ AUX_SOURCE_DIRECTORY(. SRC_LIST)
 #ADD_DEFINITIONS(-TP)
 #引入目录
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty
- ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/picojson)
+ ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/picojson ${PROJECT_SOURCE_DIR}/inc/util)
 #设置静态库
 ADD_LIBRARY(libjson STATIC ${SRC_LIST})
 #设置目录

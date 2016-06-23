@@ -1,5 +1,12 @@
+#include  <io.h>
+#include  <stdio.h>
+#include  <stdlib.h>
+#include <vector>
+#include <map>
 #include "rabbit.hpp"
 #include "json.h"
+#include "util.h"
+
 using namespace rabbit;
 
 class gpl::json::LibJson
@@ -7,10 +14,15 @@ class gpl::json::LibJson
 public:
 	LibJson();
 	~LibJson();
+	bool rabbitParseJson(std::string src);
+private:
+	std::string mjsonsrc;
+	document rootdoc;
 
 };
 
 gpl::json::LibJson::LibJson()
+	:mjsonsrc("")
 {
 
 }
@@ -18,6 +30,19 @@ gpl::json::LibJson::LibJson()
 gpl::json::LibJson::~LibJson()
 {
 
+}
+
+bool gpl::json::LibJson::rabbitParseJson(std::string src)
+{
+	try
+	{
+		rootdoc.parse(src);
+	}
+	catch (...)
+	{
+		return false;
+	}
+	return true;
 }
 
 gpl::json::json()
@@ -34,14 +59,26 @@ gpl::json::~json()
 	}
 }
 
-bool gpl::json::parseJson(std::string filename, int encoded)
+bool gpl::json::parseJson(std::string filename, int encoded /*= 0*/)
 {
-	return true;
-}
+	util u;
+	std::string _tempsrc = "";
+	if ((filename.empty() == true))
+		return false;
+	if (filename[0] == '{' || filename[0] == '[')
+		_tempsrc = filename;
+	else
+		_tempsrc = readFile(filename);
 
-bool gpl::json::parseJson(char* jsonbuf, int encoded)
-{
-	return true;
+	if (_tempsrc.empty() == true)
+		return false;
+	if (encoded == 0)
+	{
+		std::wstring src = u.Utf2U(_tempsrc);
+		_tempsrc = u.U2A(src);
+		_tempsrc = _tempsrc.substr(1, _tempsrc.size());
+	}
+	return m_json->rabbitParseJson(_tempsrc);
 }
 
 int gpl::json::getArraySize(std::string par)
@@ -58,7 +95,7 @@ std::string gpl::json::readFile(std::string filename)
 {
 	std::string src = "";
 	FILE *fp;
-	if (NULL == (fp = fopen(filename.c_str(), "r")))
+	if (NULL == (fp = fopen(filename.c_str(), "rb")))
 	{
 		src = "{\"Error\":\"Open json file Error\"}";
 		return src;

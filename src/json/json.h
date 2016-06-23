@@ -65,26 +65,14 @@ namespace gpl
 			*  @date        2016/06/21 18:01
 			*  @brief       解析json
 			*  @param[in]   filename[string]json文件路径
-			*  @param[in]   encoded[int]编码方式 - 1为Unicode编码 - 0为utf-8编码（默认）
+			*  @param[in]   encoded[int]编码方式 - 1为ansi编码 - 0为utf-8编码（默认）
 			*  @return      成功返回true，否则为false
 			*  @pre         段落
 			*  @remarks     评论
 			*  @see         参考内容
 			*  @test        测试
 			*/
-		bool parseJson(std::string filename,int encoded);
-		/**
-		*  @date        2016/06/21 18:01
-		*  @brief       解析json
-		*  @param[in]   jsonbuf[char*]json内存
-		*  @param[in]   encoded[int]编码方式 - 1为Unicode编码 - 0为utf-8编码（默认）
-		*  @return      成功返回true，否则为false
-		*  @pre         段落
-		*  @remarks     评论
-		*  @see         参考内容
-		*  @test        测试
-		*/
-		bool parseJson(char* jsonbuf, int encoded);
+		bool parseJson(std::string filename,int encoded=0);
 		/**
 			*  @date        2016/06/21 18:02
 			*  @brief       获取json数组对像的大小

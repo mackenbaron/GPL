@@ -419,7 +419,7 @@ JSON_checker_done(JSON_checker jc)
 */
 int json_checker(const char *json_str) 
 {
-    JSON_checker jc = new_JSON_checker(20);
+    JSON_checker jc = new_JSON_checker(200);
 
 	int len = strlen(json_str);
 	int tmp_i = 0;

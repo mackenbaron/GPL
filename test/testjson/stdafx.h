@@ -4,6 +4,7 @@
 #include <io.h>
 #include <winsock2.h>
 #include <Windows.h>
+#undef ERROR
 #include <shellapi.h>
 #include <Shlwapi.h>
 #include <conio.h>       
@@ -14,7 +15,6 @@
 #include <queue>
 #include <MMSystem.h>
 #include <map>
-#define snprintf sprintf_s
 #pragma comment(lib,"Shlwapi.lib")
 #pragma comment(lib, "DbgHelp.lib")
 #else
@@ -24,5 +24,5 @@
 #include <sys/types.h>
 #include <sys/stat.h> 
 #endif 
-
-#include "json.h"
+#include "json.h";
+using namespace gpl;
