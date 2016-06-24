@@ -1,13 +1,18 @@
-#include  <io.h>
-#include  <stdio.h>
-#include  <stdlib.h>
+#include <io.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <vector>
 #include <map>
+#include <string>
+#include <utility>
 #include "rabbit.hpp"
 #include "json.h"
 #include "util.h"
+#include "Tokenizer.h"
 
 using namespace rabbit;
+using namespace xpath;
+using namespace std;
 
 class gpl::json::LibJson
 {
@@ -15,6 +20,9 @@ public:
 	LibJson();
 	~LibJson();
 	bool rabbitParseJson(std::string src);
+	int returnArraySize(std::string xp);
+private:
+	vector<pair<TokenType, string> > getxpath(std::string input);
 private:
 	std::string mjsonsrc;
 	document rootdoc;
@@ -43,6 +51,49 @@ bool gpl::json::LibJson::rabbitParseJson(std::string src)
 		return false;
 	}
 	return true;
+}
+
+vector<pair<TokenType, string> > gpl::json::LibJson::getxpath(std::string input)
+{
+	vector<pair<TokenType, string> > received;
+
+	const char* input_data = input.data();
+	const char* input_end = input_data + input.size();
+	TokenType token_type;
+	const char* token_data;
+	size_t token_size;
+	while ((token_type = ScanToken(input_data, input_end - input_data, &token_data, &token_size)) != T_None) {
+		received.push_back({ token_type, string(token_data, token_data + token_size) });
+		input_data = token_data + token_size;
+	}
+	return received;
+}
+
+int gpl::json::LibJson::returnArraySize(std::string xp)
+{
+	int arraysize = 0;
+	vector<pair<TokenType, string> > xpathsrc = getxpath(xp);
+	object _tempitem = rootdoc;
+	try
+	{		
+		for (int i = 0; i < xpathsrc.size(); i++)
+		{
+			TokenType t = xpathsrc[i].first;			
+			if (t == T_Slash)
+			{
+				i++;
+				std::string v = xpathsrc[i].second;
+				_tempitem = _tempitem["" + v + ""];
+			}			
+		}
+		arraysize = _tempitem.size();
+	}
+	catch (...)
+	{
+		arraysize = -1;
+	}
+	
+	return arraysize;
 }
 
 gpl::json::json()
@@ -83,7 +134,7 @@ bool gpl::json::parseJson(std::string filename, int encoded /*= 0*/)
 
 int gpl::json::getArraySize(std::string par)
 {
-	return 1;
+	return m_json->returnArraySize(par);
 }
 
 void gpl::json::getItemDate(int& date, std::string par)
