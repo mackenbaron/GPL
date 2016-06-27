@@ -147,7 +147,6 @@ namespace gpl
 	private:
 		class LibJson;
 		LibJson* m_json;
-		std::string mjsonsrc;
 	};
 
 }

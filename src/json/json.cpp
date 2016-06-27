@@ -21,11 +21,14 @@ public:
 	~LibJson();
 	bool rabbitParseJson(std::string src);
 	int returnArraySize(std::string xp);
+	std::string getStringDate(std::string xp);
 private:
 	vector<pair<TokenType, string> > getxpath(std::string input);
+	bool setObjectPost(std::string xp);
 private:
 	std::string mjsonsrc;
 	document rootdoc;
+	object setpost;
 
 };
 
@@ -72,28 +75,104 @@ vector<pair<TokenType, string> > gpl::json::LibJson::getxpath(std::string input)
 int gpl::json::LibJson::returnArraySize(std::string xp)
 {
 	int arraysize = 0;
+	if (setObjectPost(xp))
+		arraysize = setpost.size();	
+	return arraysize;
+}
+
+bool gpl::json::LibJson::setObjectPost(std::string xp)
+{
+	setpost = rootdoc;
 	vector<pair<TokenType, string> > xpathsrc = getxpath(xp);
-	object _tempitem = rootdoc;
 	try
-	{		
+	{
 		for (int i = 0; i < xpathsrc.size(); i++)
 		{
-			TokenType t = xpathsrc[i].first;			
-			if (t == T_Slash)
+			TokenType t = xpathsrc[i].first;
+			switch (t)
 			{
+			case T_None:
+				break;
+			case T_LeftParen:
+				break;
+			case T_RightParen:
+				break;
+			case T_LeftBracket:
 				i++;
-				std::string v = xpathsrc[i].second;
-				_tempitem = _tempitem["" + v + ""];
-			}			
+				setpost = setpost.at(atoi(xpathsrc[i].second.c_str()));
+				break;
+			case T_RightBracket:
+				break;
+			case T_Dot:
+				break;
+			case T_DoubleDot:
+				break;
+			case T_At:
+				break;
+			case T_Comma:
+				break;
+			case T_DoubleColon:
+				break;
+			case T_Literal:
+				break;
+			case T_Number:
+				break;
+			case T_Slash:
+				i++;
+				setpost = setpost["" + xpathsrc[i].second + ""];
+				break;
+			case T_DoubleSlash:
+				break;
+			case T_Pipe:
+				break;
+			case T_Plus:
+				break;
+			case T_Minus:
+				break;
+			case T_Equal:
+				break;
+			case T_NotEqual:
+				break;
+			case T_LessThan:
+				break;
+			case T_LessEqual:
+				break;
+			case T_GreaterThan:
+				break;
+			case T_GreaterEqual:
+				break;
+			case T_Multiply:
+				break;
+			case T_VariableReference:
+				break;
+			case T_NodeType:
+				break;
+			case T_OperatorName:
+				break;
+			case T_FunctionName:
+				break;
+			case T_AxisName:
+				break;
+			case T_NameTest:
+				break;
+			default:
+				break;
+			}
 		}
-		arraysize = _tempitem.size();
 	}
 	catch (...)
 	{
-		arraysize = -1;
+		return false;
 	}
-	
-	return arraysize;
+	return true;
+}
+
+std::string gpl::json::LibJson::getStringDate(std::string xp)
+{
+	if (setObjectPost(xp))
+		return setpost.as_string();
+	else
+		return "";
 }
 
 gpl::json::json()
@@ -164,7 +243,7 @@ std::string gpl::json::readFile(std::string filename)
 
 void gpl::json::getItemDate(std::string &date, std::string par)
 {
-
+	date = m_json->getStringDate(par);
 }
 
 void gpl::json::getItemDate(bool &date, std::string par)
