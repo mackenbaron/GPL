@@ -24,6 +24,7 @@ public:
 	std::string getStringDate(std::string xp);
 	bool getBoolDate(std::string xp);
 	int getInitDate(std::string xp);
+	double getDoubleDate(std::string xp);
 private:
 	vector<pair<TokenType, string> > getxpath(std::string input);
 	bool setObjectPost(std::string xp);
@@ -144,6 +145,17 @@ int gpl::json::LibJson::getInitDate(std::string xp)
 		return 0;
 }
 
+double gpl::json::LibJson::getDoubleDate(std::string xp)
+{
+	if (setObjectPost(xp))
+		if ((!setpost.is_null()) && (setpost.is_double()))
+			return setpost.as_double();
+		else
+			return 0;
+	else
+		return 0;
+}
+
 gpl::json::json()
 {
 	m_json = new LibJson();
@@ -187,7 +199,7 @@ int gpl::json::getArraySize(std::string par)
 
 void gpl::json::getItemDate(int& date, std::string par)
 {
-
+	date = m_json->getInitDate(par);
 }
 
 std::string gpl::json::readFile(std::string filename)
@@ -222,5 +234,5 @@ void gpl::json::getItemDate(bool &date, std::string par)
 
 void gpl::json::getItemDate(double &date, std::string par)
 {
-	date = m_json->getInitDate(par);
+	date = m_json->getDoubleDate(par);
 }
