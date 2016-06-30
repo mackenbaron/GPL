@@ -132,6 +132,123 @@ namespace gpl
 		*  @test        测试
 		*/
 		void getItemDate(double &date, std::string par);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       创建json
+		*  @param[in]   type[int]创建类型 - 1是object - 2是array
+		*  @return      void
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		void createJosn(int type);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       创建无名数组
+		*  @return      - true 成功 - false 失败
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addUnNameObject();
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       创建有名字对像
+		*  @param[in]   on[string]对象名字
+		*  @return      - true 成功 - false 失败
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addNameObject(std::string on);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       创建有名字的数组
+		*  @param[in]   an[string]数组名字
+		*  @return      - true 成功 - false 失败
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addNameArray(std::string an);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       添加键值对
+		*  @param[in]   par[string]插入路径，遵循xpaht
+		*  @param[in]   n[string]插入键
+		*  @param[in]   v[string]插入值
+		*  @return      - true 成功 - false 失败
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addItem(std::string par, std::string n, std::string v);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       添加键值对
+		*  @param[in]   par[string]插入路径，遵循xpaht
+		*  @param[in]   n[string]插入键
+		*  @param[in]   v[int]插入值
+		*  @return      - true 成功 - false 失败
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addItem(std::string par, std::string n, int v);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       添加键值对
+		*  @param[in]   par[string]插入路径，遵循xpaht
+		*  @param[in]   n[string]插入键
+		*  @param[in]   v[double]插入值
+		*  @return      - true 成功 - false 失败
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addItem(std::string par, std::string n, double v);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       添加键值对
+		*  @param[in]   par[string]插入路径，遵循xpaht
+		*  @param[in]   n[string]插入键
+		*  @param[in]   v[bool]插入值
+		*  @return      - true 成功 - false 失败
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addItem(std::string par, std::string n, bool v);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       写文件数据
+		*  @param[in]   filename[string]文件路径
+		*  @return      true写成功，false写失败;
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool jsonToFile(std::string filename);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       将json对像转换成string
+		*  @param[out]   jsonsrc[string]json字符串
+		*  @return      true成功，false失败;
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool jsonToString(std::string jsonsrc);
 	private:
 		/**
 		*  @date        2016/06/21 18:04
@@ -144,6 +261,7 @@ namespace gpl
 		*  @test        测试
 		*/
 		std::string readFile(std::string filename);
+		
 	private:
 		class LibJson;
 		LibJson* m_json;
