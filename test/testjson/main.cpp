@@ -8,8 +8,8 @@ int main(int argc, char *argv[])
 
  	bool s = js.parseJson("e:\\test.json");	
 
-// 	int size = js.getArraySize("/data/children");
+ 	int size = js.getArraySize("/data/children");
  	std::string url = "";
- 	js.getItemDate(url, "/data/children[1]/data/selftext");
-// 	std::cout << "url" << url.c_str() << std::endl;
+ 	js.getItemDate(url, "/data/children[0]/data/selftext");
+ 	std::cout << "url" << url.c_str() << std::endl;
 }

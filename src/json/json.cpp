@@ -19,31 +19,38 @@ class gpl::json::LibJson
 public:
 	LibJson();
 	~LibJson();
-	bool rabbitParseJson(std::string src);
-	int returnArraySize(std::string xp);
-	std::string getStringDate(std::string xp);
-	bool getBoolDate(std::string xp);
-	int getInitDate(std::string xp);
-	double getDoubleDate(std::string xp);
+	bool rabbitParseJson(std::string src);//解析json
+	int returnArraySize(std::string xp);//返回数组大小
+	std::string getStringDate(std::string xp);//获取json指定的值
+	bool getBoolDate(std::string xp);//获取json指定的值
+	int getInitDate(std::string xp);//获取json指定的值
+	double getDoubleDate(std::string xp);//获取json指定的值
 private:
-	vector<pair<TokenType, string> > getxpath(std::string input);
-	bool setObjectPost(std::string xp);
+	vector<pair<TokenType, string> > getxpath(std::string input);//解析xpath
+	bool setObjectPost(std::string xp);//根据xpath结果设置临时object
 private:
+	int mjsontype;//创建类型
 	std::string mjsonsrc;
-	document rootdoc;
-	object setpost;
+	document rootdoc;//解析
 
+	object setpost;//临时
+
+	object createJsonObject;//创建
+	array createJsonArray;//创建
 };
 
 gpl::json::LibJson::LibJson()
 	:mjsonsrc("")
+	, mjsontype(0)
 {
-
+	createJsonObject.clear();
+	createJsonArray.clear();
 }
 
 gpl::json::LibJson::~LibJson()
 {
-
+	createJsonObject.clear();
+	createJsonArray.clear();
 }
 
 bool gpl::json::LibJson::rabbitParseJson(std::string src)
@@ -85,10 +92,23 @@ int gpl::json::LibJson::returnArraySize(std::string xp)
 
 bool gpl::json::LibJson::setObjectPost(std::string xp)
 {
-	setpost = rootdoc;
+	
 	vector<pair<TokenType, string> > xpathsrc = getxpath(xp);
 	try
 	{
+		if (mjsontype == 0)
+		{
+			setpost = rootdoc;
+		}
+		else if (mjsontype ==1)
+		{
+			setpost = createJsonObject;
+		}
+		else if (mjsontype == 2)
+		{
+			setpost = createJsonArray;
+		}
+
 		for (int i = 0; i < xpathsrc.size(); i++)
 		{
 			TokenType t = xpathsrc[i].first;
