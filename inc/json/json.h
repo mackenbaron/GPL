@@ -145,36 +145,39 @@ namespace gpl
 		void createJosn(int type);
 		/**
 		*  @date        2016/06/21 18:04
-		*  @brief       创建无名数组
+		*  @brief       添加无名对像，只适合数组
+		*  @param[in]   par[string]添加路径
 		*  @return      - true 成功 - false 失败
 		*  @pre         段落
 		*  @remarks     评论
 		*  @see         参考内容
 		*  @test        测试
 		*/
-		bool addUnNameObject();
+		bool addUnNameObject(std::string par);
 		/**
 		*  @date        2016/06/21 18:04
-		*  @brief       创建有名字对像
-		*  @param[in]   on[string]对象名字
+		*  @brief       添加有名对像，适合对像和数组
+		*  @param[in]   on[char*]对象名字
+		*  @param[in]   par[string]添加路径
 		*  @return      - true 成功 - false 失败
 		*  @pre         段落
 		*  @remarks     评论
 		*  @see         参考内容
 		*  @test        测试
 		*/
-		bool addNameObject(std::string on);
+		bool addNameObject(std::string par,char* on);
 		/**
 		*  @date        2016/06/21 18:04
-		*  @brief       创建有名字的数组
-		*  @param[in]   an[string]数组名字
+		*  @brief       添加有名字数组,适合对像和数组
+		*  @param[in]   an[char*]数组名字
+		*  @param[in]   par[string]添加路径
 		*  @return      - true 成功 - false 失败
 		*  @pre         段落
 		*  @remarks     评论
 		*  @see         参考内容
 		*  @test        测试
 		*/
-		bool addNameArray(std::string an);
+		bool addNameArray(std::string par,char* an);
 		/**
 		*  @date        2016/06/21 18:04
 		*  @brief       添加键值对
@@ -187,46 +190,7 @@ namespace gpl
 		*  @see         参考内容
 		*  @test        测试
 		*/
-		bool addItem(std::string par, std::string n, std::string v);
-		/**
-		*  @date        2016/06/21 18:04
-		*  @brief       添加键值对
-		*  @param[in]   par[string]插入路径，遵循xpaht
-		*  @param[in]   n[string]插入键
-		*  @param[in]   v[int]插入值
-		*  @return      - true 成功 - false 失败
-		*  @pre         段落
-		*  @remarks     评论
-		*  @see         参考内容
-		*  @test        测试
-		*/
-		bool addItem(std::string par, std::string n, int v);
-		/**
-		*  @date        2016/06/21 18:04
-		*  @brief       添加键值对
-		*  @param[in]   par[string]插入路径，遵循xpaht
-		*  @param[in]   n[string]插入键
-		*  @param[in]   v[double]插入值
-		*  @return      - true 成功 - false 失败
-		*  @pre         段落
-		*  @remarks     评论
-		*  @see         参考内容
-		*  @test        测试
-		*/
-		bool addItem(std::string par, std::string n, double v);
-		/**
-		*  @date        2016/06/21 18:04
-		*  @brief       添加键值对
-		*  @param[in]   par[string]插入路径，遵循xpaht
-		*  @param[in]   n[string]插入键
-		*  @param[in]   v[bool]插入值
-		*  @return      - true 成功 - false 失败
-		*  @pre         段落
-		*  @remarks     评论
-		*  @see         参考内容
-		*  @test        测试
-		*/
-		bool addItem(std::string par, std::string n, bool v);
+		bool addItem(std::string par, char* n, char* v);
 		/**
 		*  @date        2016/06/21 18:04
 		*  @brief       写文件数据

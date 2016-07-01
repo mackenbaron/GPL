@@ -25,6 +25,16 @@ public:
 	bool getBoolDate(std::string xp);//获取json指定的值
 	int getInitDate(std::string xp);//获取json指定的值
 	double getDoubleDate(std::string xp);//获取json指定的值
+
+	void createJsonType(int t){ mjsontype = t; }//设置json的类型
+
+	bool createUnNameObject(std::string xp);//创建无名的对像
+	bool createNameObject(std::string xp, char* on);//创建有名字的对像
+	bool createNameArray(std::string xp, char* an);//创建有名字的数组
+
+	bool createJsonItem(std::string xp, char*n, std::string v);
+
+	std::string getJsonSrc();
 private:
 	vector<pair<TokenType, string> > getxpath(std::string input);//解析xpath
 	bool setObjectPost(std::string xp);//根据xpath结果设置临时object
@@ -176,6 +186,115 @@ double gpl::json::LibJson::getDoubleDate(std::string xp)
 		return 0;
 }
 
+bool gpl::json::LibJson::createUnNameObject(std::string xp)
+{
+	try
+	{
+		if (setObjectPost(xp))
+		{
+			object item;
+			setpost.push_back(item);
+		}
+		else
+		{
+			return false;
+		}
+	}
+	catch (...)
+	{
+		return false;
+	}
+	return true;
+	
+}
+
+bool gpl::json::LibJson::createNameObject(std::string xp, char* on)
+{
+	try
+	{
+		if (setObjectPost(xp))
+		{
+			object item;
+			setpost.insert(on,item);
+		}
+		else
+		{
+			return false;
+		}
+	}
+	catch (...)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool gpl::json::LibJson::createNameArray(std::string xp, char* an)
+{
+	try
+	{
+		if (setObjectPost(xp))
+		{
+			array item;
+			setpost.insert(an, item);
+		}
+		else
+		{
+			return false;
+		}
+	}
+	catch (...)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool gpl::json::LibJson::createJsonItem(std::string xp, char* n, std::string v)
+{
+	try
+	{
+		if (setObjectPost(xp))
+		{
+			if (n != NULL)
+			{
+				setpost.insert(n, 123);
+			}
+			else{ return false; }
+		}
+		else
+		{
+			return false;
+		}
+	}
+	catch (...)
+	{
+		return false;
+	}
+	return true;
+}
+
+std::string gpl::json::LibJson::getJsonSrc()
+{
+	if (mjsontype == 1)
+	{
+		if (!createJsonObject.is_null())
+			return createJsonObject.str();
+		else
+			return "";
+	}
+	else if (mjsontype == 2)
+	{
+		if (!createJsonArray.is_null())
+		{
+			std::string src = createJsonArray.str();
+			return createJsonArray.str();
+		}
+		else
+			return "";
+	}
+}
+
 gpl::json::json()
 {
 	m_json = new LibJson();
@@ -255,4 +374,41 @@ void gpl::json::getItemDate(bool &date, std::string par)
 void gpl::json::getItemDate(double &date, std::string par)
 {
 	date = m_json->getDoubleDate(par);
+}
+
+void gpl::json::createJosn(int type)
+{
+	m_json->createJsonType(type);
+}
+
+bool gpl::json::addUnNameObject(std::string par)
+{
+	return m_json->createUnNameObject(par);
+}
+
+bool gpl::json::addNameObject(std::string par, char* on)
+{
+	return m_json->createNameObject(par, on);
+}
+
+bool gpl::json::addNameArray(std::string par, char* an)
+{
+	return m_json->createNameObject(par, an);
+}
+
+bool gpl::json::addItem(std::string par, char* n, char* v)
+{
+	return m_json->createJsonItem(par, n, v);
+}
+
+bool gpl::json::jsonToString(std::string jsonsrc)
+{
+	std::string src = m_json->getJsonSrc();
+	jsonsrc = src;
+	return true;
+}
+
+bool gpl::json::jsonToFile(std::string filename)
+{
+	return true;
 }
