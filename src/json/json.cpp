@@ -12,7 +12,6 @@
 
 using namespace rabbit;
 using namespace xpath;
-using namespace std;
 
 class gpl::json::LibJson
 {
@@ -32,11 +31,11 @@ public:
 	bool createNameObject(std::string xp, char* on);//创建有名字的对像
 	bool createNameArray(std::string xp, char* an);//创建有名字的数组
 
-	bool createJsonItem(std::string xp, char*n, std::string v);
+	bool createJsonItem(std::string xp, char*n, char*v);
 
 	std::string getJsonSrc();
 private:
-	vector<pair<TokenType, string> > getxpath(std::string input);//解析xpath
+	std::vector<std::pair<TokenType, std::string> > getxpath(std::string input);//解析xpath
 	bool setObjectPost(std::string xp);//根据xpath结果设置临时object
 private:
 	int mjsontype;//创建类型
@@ -45,7 +44,7 @@ private:
 
 	object setpost;//临时
 
-	object createJsonObject;//创建
+	document createJsonObject;//创建
 	array createJsonArray;//创建
 };
 
@@ -53,13 +52,11 @@ gpl::json::LibJson::LibJson()
 	:mjsonsrc("")
 	, mjsontype(0)
 {
-	createJsonObject.clear();
 	createJsonArray.clear();
 }
 
 gpl::json::LibJson::~LibJson()
 {
-	createJsonObject.clear();
 	createJsonArray.clear();
 }
 
@@ -76,9 +73,9 @@ bool gpl::json::LibJson::rabbitParseJson(std::string src)
 	return true;
 }
 
-vector<pair<TokenType, string> > gpl::json::LibJson::getxpath(std::string input)
+std::vector<std::pair<TokenType, std::string> > gpl::json::LibJson::getxpath(std::string input)
 {
-	vector<pair<TokenType, string> > received;
+	std::vector<std::pair<TokenType, std::string> > received;
 
 	const char* input_data = input.data();
 	const char* input_end = input_data + input.size();
@@ -86,7 +83,7 @@ vector<pair<TokenType, string> > gpl::json::LibJson::getxpath(std::string input)
 	const char* token_data;
 	size_t token_size;
 	while ((token_type = ScanToken(input_data, input_end - input_data, &token_data, &token_size)) != T_None) {
-		received.push_back({ token_type, string(token_data, token_data + token_size) });
+		received.push_back({ token_type, std::string(token_data, token_data + token_size) });
 		input_data = token_data + token_size;
 	}
 	return received;
@@ -103,14 +100,14 @@ int gpl::json::LibJson::returnArraySize(std::string xp)
 bool gpl::json::LibJson::setObjectPost(std::string xp)
 {
 	
-	vector<pair<TokenType, string> > xpathsrc = getxpath(xp);
+	std::vector<std::pair<TokenType, std::string> > xpathsrc = getxpath(xp);
 	try
-	{
+	{	
 		if (mjsontype == 0)
 		{
 			setpost = rootdoc;
 		}
-		else if (mjsontype ==1)
+		else if (mjsontype == 1)
 		{
 			setpost = createJsonObject;
 		}
@@ -118,7 +115,6 @@ bool gpl::json::LibJson::setObjectPost(std::string xp)
 		{
 			setpost = createJsonArray;
 		}
-
 		for (int i = 0; i < xpathsrc.size(); i++)
 		{
 			TokenType t = xpathsrc[i].first;
@@ -179,9 +175,12 @@ double gpl::json::LibJson::getDoubleDate(std::string xp)
 {
 	if (setObjectPost(xp))
 		if ((!setpost.is_null()) && (setpost.is_double()))
+		{
 			return setpost.as_double();
-		else
+		}else
+		{
 			return 0;
+		}
 	else
 		return 0;
 }
@@ -250,7 +249,7 @@ bool gpl::json::LibJson::createNameArray(std::string xp, char* an)
 	return true;
 }
 
-bool gpl::json::LibJson::createJsonItem(std::string xp, char* n, std::string v)
+bool gpl::json::LibJson::createJsonItem(std::string xp, char* n, char*v)
 {
 	try
 	{
@@ -258,7 +257,14 @@ bool gpl::json::LibJson::createJsonItem(std::string xp, char* n, std::string v)
 		{
 			if (n != NULL)
 			{
-				setpost.insert(n, 123);
+				int len = strlen(n);
+				if (len > 0)
+				{
+					setpost[n] = v;
+				}else
+				{
+					setpost[n] = null_tag();
+				}
 			}
 			else{ return false; }
 		}
@@ -279,15 +285,16 @@ std::string gpl::json::LibJson::getJsonSrc()
 	if (mjsontype == 1)
 	{
 		if (!createJsonObject.is_null())
+		{ 
+			std::string src = createJsonObject.str();
 			return createJsonObject.str();
-		else
+		}else
 			return "";
 	}
 	else if (mjsontype == 2)
 	{
 		if (!createJsonArray.is_null())
 		{
-			std::string src = createJsonArray.str();
 			return createJsonArray.str();
 		}
 		else
@@ -401,14 +408,33 @@ bool gpl::json::addItem(std::string par, char* n, char* v)
 	return m_json->createJsonItem(par, n, v);
 }
 
-bool gpl::json::jsonToString(std::string jsonsrc)
+bool gpl::json::jsonToString(std::string &jsonsrc)
 {
-	std::string src = m_json->getJsonSrc();
-	jsonsrc = src;
-	return true;
+	jsonsrc = m_json->getJsonSrc();
+	if (jsonsrc.size()>0)
+	{
+		return true;
+	} 
+	else
+	{
+		return false;
+	}
 }
 
 bool gpl::json::jsonToFile(std::string filename)
 {
-	return true;
+	if (filename.size() <= 0)
+		return false;
+	std::string src = m_json->getJsonSrc();
+	if (src.size() <= 0)
+		return false;
+	FILE *file = NULL;
+	file = fopen(const_cast<char*>(filename.c_str()), "wb");
+	if (file != NULL)
+	{
+		fwrite(src.c_str(), src.size(),1, file);
+		fclose(file);
+		return true;
+	}
+	return false;
 }

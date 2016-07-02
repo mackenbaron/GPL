@@ -111,7 +111,7 @@ enum { STDIN_FILENO = 0, STDOUT_FILENO = 1, STDERR_FILENO = 2 };
  * because they don't always NUL-terminate. :-(  We also can't use the
  * name vsnprintf, since windows defines that (but not snprintf (!)).
  */
-extern int snprintf(char *str, size_t size,
+extern int snprintfs(char *str, size_t size,
                                        const char *format, ...);
 extern int safe_vsnprintf(char *str, size_t size,
                           const char *format, va_list ap);

@@ -212,7 +212,7 @@ namespace gpl
 		*  @see         ²Î¿¼ÄÚÈİ
 		*  @test        ²âÊÔ
 		*/
-		bool jsonToString(std::string jsonsrc);
+		bool jsonToString(std::string &jsonsrc);
 	private:
 		/**
 		*  @date        2016/06/21 18:04

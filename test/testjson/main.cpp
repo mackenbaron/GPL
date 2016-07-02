@@ -13,9 +13,9 @@ int main(int argc, char *argv[])
 //  	js.getItemDate(url, "/data/children[0]/data/selftext");
 //  	std::cout << "url" << url.c_str() << std::endl;
 	bool s = false;
-	js.createJosn(2);
-	s =js.addUnNameObject("/");
-	s =js.addItem("[0]", "zhang", "zhang");
+	js.createJosn(1);
+	//s =js.addUnNameObject("/");
+	s =js.addItem("/", "zhang", "zhang");
 
 	std::string src = "";
 	s =js.jsonToString(src);
