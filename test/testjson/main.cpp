@@ -39,13 +39,13 @@ void createJson()
 
 
 	s = js.jsonToString(src);
+	js.jsonToFile("e:\\a.json");
 
 }
 void parseJson()
 {
 	json js;
 	std::string src = "";
-	bool s = false;
 
 	bool s = js.parseJson("e:\\test.json");	
 	 
@@ -57,5 +57,5 @@ void parseJson()
 }
 int main(int argc, char *argv[])
 {
-	
+	createJson();
 }
