@@ -183,7 +183,7 @@ namespace gpl
 		*  @brief       添加键值对
 		*  @param[in]   par[string]插入路径，遵循xpaht
 		*  @param[in]   n[string]插入键
-		*  @param[in]   v[string]插入值
+		*  @param[in]   v[char*]插入值
 		*  @return      - true 成功 - false 失败
 		*  @pre         段落
 		*  @remarks     评论
@@ -191,6 +191,45 @@ namespace gpl
 		*  @test        测试
 		*/
 		bool addItem(std::string par, char* n, char* v);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       添加键值对
+		*  @param[in]   par[string]插入路径，遵循xpaht
+		*  @param[in]   n[string]插入键
+		*  @param[in]   v[bool]插入值
+		*  @return      - true 成功 - false 失败
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addItem(std::string par, char* n, bool v);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       添加键值对
+		*  @param[in]   par[string]插入路径，遵循xpaht
+		*  @param[in]   n[string]插入键
+		*  @param[in]   v[double]插入值
+		*  @return      - true 成功 - false 失败
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addItem(std::string par, char* n, double v);
+		/**
+		*  @date        2016/06/21 18:04
+		*  @brief       添加键值对
+		*  @param[in]   par[string]插入路径，遵循xpaht
+		*  @param[in]   n[string]插入键
+		*  @param[in]   v[int]插入值
+		*  @return      - true 成功 - false 失败
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addItem(std::string par, char* n, int v);
 		/**
 		*  @date        2016/06/21 18:04
 		*  @brief       写文件数据
@@ -212,7 +251,7 @@ namespace gpl
 		*  @see         参考内容
 		*  @test        测试
 		*/
-		bool jsonToString(std::string jsonsrc);
+		bool jsonToString(std::string &jsonsrc);
 	private:
 		/**
 		*  @date        2016/06/21 18:04

@@ -32,6 +32,9 @@ public:
 	bool createNameArray(std::string xp, char* an);//创建有名字的数组
 
 	bool createJsonItem(std::string xp, char*n, char*v);
+	bool createJsonItem(std::string xp, char*n, bool v);
+	bool createJsonItem(std::string xp, char*n, double v);
+	bool createJsonItem(std::string xp, char*n, int v);
 
 	std::string getJsonSrc();
 private:
@@ -280,6 +283,78 @@ bool gpl::json::LibJson::createJsonItem(std::string xp, char* n, char*v)
 	return true;
 }
 
+bool gpl::json::LibJson::createJsonItem(std::string xp, char*n, bool v)
+{
+	try
+	{
+		if (setObjectPost(xp))
+		{
+			if (n != NULL)
+			{
+				setpost[n] = v;
+			}
+			else{ return false; }
+		}
+		else
+		{
+			return false;
+		}
+	}
+	catch (...)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool gpl::json::LibJson::createJsonItem(std::string xp, char*n, double v)
+{
+	try
+	{
+		if (setObjectPost(xp))
+		{
+			if (n != NULL)
+			{
+				setpost[n] = v;
+			}
+			else{ return false; }
+		}
+		else
+		{
+			return false;
+		}
+	}
+	catch (...)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool gpl::json::LibJson::createJsonItem(std::string xp, char*n, int v)
+{
+	try
+	{
+		if (setObjectPost(xp))
+		{
+			if (n != NULL)
+			{
+				setpost[n] = v;
+			}
+			else{ return false; }
+		}
+		else
+		{
+			return false;
+		}
+	}
+	catch (...)
+	{
+		return false;
+	}
+	return true;
+}
+
 std::string gpl::json::LibJson::getJsonSrc()
 {
 	if (mjsontype == 1)
@@ -400,10 +475,25 @@ bool gpl::json::addNameObject(std::string par, char* on)
 
 bool gpl::json::addNameArray(std::string par, char* an)
 {
-	return m_json->createNameObject(par, an);
+	return m_json->createNameArray(par, an);
 }
 
 bool gpl::json::addItem(std::string par, char* n, char* v)
+{
+	return m_json->createJsonItem(par, n, v);
+}
+
+bool gpl::json::addItem(std::string par, char* n, bool v)
+{
+	return m_json->createJsonItem(par, n, v);
+}
+
+bool gpl::json::addItem(std::string par, char* n, double v)
+{
+	return m_json->createJsonItem(par, n, v);
+}
+
+bool gpl::json::addItem(std::string par, char* n, int v)
 {
 	return m_json->createJsonItem(par, n, v);
 }
