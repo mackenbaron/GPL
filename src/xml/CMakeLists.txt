@@ -141,6 +141,35 @@ SET(SRC_LIST 	buf.c
 		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/common/vli_encoder.c
 		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/common/vli_size.c
 		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/simple/x86.c
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/attribute.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/attribute_map.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/check_rules.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/child_node.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/child_node_list.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/comment.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/config_diag.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/document.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/dom_parser.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/element.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/instruction.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/libxml2_callbacks.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/libxml2_globals.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/libxml2_utility.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/node.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/node_set.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/sax_attribute_list.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/sax_error_info.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/sax_handler.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/sax_parser.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/schema.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/text.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/validity.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/xml_base.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/xmlns.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/xpath.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/xpath_context.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/xpath_result.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree/xpath_typed_results.cpp
 		xml.cpp)
 #添加引用目录
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/. 
@@ -154,7 +183,8 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/.
 		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/lz
 		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/lzma
 		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/rangecoder
-		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/simple)
+		${CMAKE_CURRENT_SOURCE_DIR}/lzma/liblzma/simple
+		${CMAKE_CURRENT_SOURCE_DIR}/xtree)
 #添加自定义预处理
 ADD_DEFINITIONS(-DHAVE_CONFIG_H 
 		-DENABLE_RELOCATABLE=1 
