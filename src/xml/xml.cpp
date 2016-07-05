@@ -21,6 +21,8 @@ extern "C"
 }
 #endif
 
+#include <xtree/xtree_dom.hpp>
+
 class gpl::xml::LibXml
 {
 public:
@@ -53,6 +55,8 @@ public:
 	*@return 成功返回true,否则返回false;
 	*/
 	bool   getDumpAttribute(xmlAttrPtr attrPtr, std::multimap<std::string, std::string>&resultSet);
+
+	bool clearDomXml();
 
 public:
 	xmlDocPtr doc;
@@ -244,6 +248,30 @@ bool gpl::xml::LibXml::getDumpAttribute(xmlAttrPtr attrPtr, std::multimap<std::s
 			value = getStringByXmlCharPtr(xmlNodeListGetString(doc, tmpAttrPtr->children, 1), 1);
 		resultSet.insert(std::multimap<std::string, std::string>::value_type(name, value));
 	}
+	return true;
+}
+
+bool gpl::xml::LibXml::clearDomXml()
+{
+
+	std::auto_ptr<xtree::document> doc = xtree::create_document("root");
+
+	
+	xtree::element_ptr root = doc->root();
+	xtree::element_ptr c = root->push_back_element("a");
+	c->push_back_text("张长生");
+	c->set_attr("url", "www.baidu.com");
+
+	xtree::element_ptr c2 = root->push_back_element("a");
+	c2->push_back_text("张长");
+	c2->set_attr("url", "www.youku.com");
+	
+	xtree::element_ptr items = doc->root()->find_elem_by_name("a");
+	xtree::element_ptr c1 = items->push_back_element("a2");
+	c1->push_back_text("张长生");
+	c1->set_attr("url", "www.baidu.com");
+
+	std::string src = doc->str();
 	return true;
 }
 
@@ -902,34 +930,7 @@ void gpl::xml::ltoa(const long& l, std::string& str)
 	return;
 }
 
-bool gpl::xml::createXml(std::string rootnode,std::string encod/* = "UTF-8"*/, std::string filename /*= ""*/)
+bool gpl::xml::createXml()
 {
-	return true;
+	return m_xml->clearDomXml();
 }
-
-bool gpl::xml::addANode(std::string node)
-{
-	return true;
-}
-
-bool gpl::xml::addAItem(std::string node, std::string item, std::string content)
-{
-	return true;
-}
-
-bool gpl::xml::saveToFile(std::string encod /*= "UTF-8"*/, std::string filename /*= ""*/, bool blankpad /*= true*/)
-{
-	return true;
-}
-
-bool gpl::xml::addattribute(std::string node, std::string attriname, std::string attrivalue)
-{
-	return true;
-}
-
-/*void XmlApi::setOnlyGetEntityNameFlag(bool b)
-{
-m_xml->isOnlyEntityName=b;
-return;
-}
-*/

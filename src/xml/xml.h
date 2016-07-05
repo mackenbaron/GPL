@@ -459,69 +459,10 @@ namespace gpl
 		*@return 成功返回true,否则false;
 		*/
 		//void setOnlyGetEntityNameFlag(bool b);
-		/**
-			*  @date        2016/06/15 13:28
-			*  @brief       创建xml
-			*  @param[in]	rootnode[string]创建xml的root节点名字
-			*  @param[in]   filname[string]创建xml的名字,如果这里为空，那么在saveToFile里面一定要写名字
-			*  @param[in]   encod[string]创建xml的编码格式，默认utf-8
-			*  @return      成功返回true，否则为false
-			*  @pre         创建一个xml DOC的一个指针
-			*  @remarks     评论
-			*  @see         gpl::xml::saveToFile
-			*  @test        测试
-			*/
-		bool createXml(std::string rootnode,std::string encod = "UTF-8", std::string filename = "");
-		/**
-			*  @date        2016/06/15 13:41
-			*  @brief       添加一个节点
-			*  @param[in]   node[string]节点名字
-			*  @return      成功返回true，否则为false
-			*  @pre         添加一个以node为名字的节点
-			*  @remarks     评论
-			*  @see         参考内容
-			*  @test        测试
-			*/
-		bool addANode(std::string node);
-		/**
-			*  @date        2016/06/15 13:43
-			*  @brief       为节点添加一个子节点
-			*  @param[in]   node[string]一个以存在的节点名字，如果这个节点不存在返回false
-			*  @param[in]   item[string]添加的子节点，如果这个子节点存在返回false
-			*  @param[in]   content[string]子节点内存
-			*  @return      成功返回true，否则为false
-			*  @pre         段落
-			*  @remarks     评论
-			*  @see         参考内容
-			*  @test        测试
-			*/
-		bool addAItem(std::string node, std::string item, std::string content);
-/** 
-    *  @date        2016/06/15 15:03 
-    *  @brief       给节点添加属性 
-    *  @param[in]   node[string]要添加属性的节点
-	*  @param[in]   attriname[string]属性名称
-    *  @param[in]   attrivalue[string]属性值
-    *  @return      成功返回true，否则为false 
-    *  @pre         段落
-    *  @remarks     评论 
-    *  @see         参考内容
-    *  @test        测试       
-    */  
-		bool addattribute(std::string node,std::string attriname ,std::string attrivalue);
-		/**
-			*  @date        2016/06/15 14:24
-			*  @brief       保存xml到文件
-			*  @param[in]   encod[string]保存xml的编码
-			*  @param[in]   filename[string]保存xml的文件名字，在createXml中声明了这里可以为空
-			*  @param[in]   blankpad[bool]是否进行格式化输出
-			*  @return      成功返回true，否则为false
-			*  @pre         段落
-			*  @remarks     评论
-			*  @see         参考内容
-			*  @test        测试
-			*/
-		bool saveToFile(std::string encod = "UTF-8", std::string filename = "", bool blankpad = true);
+		
+		///////////////////////////////////////////////////////////////
+
+		bool createXml();
 	protected:
 		class LibXml;
 		LibXml* m_xml;
