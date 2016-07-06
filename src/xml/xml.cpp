@@ -58,12 +58,24 @@ public:
 
 	bool clearDomXml();
 
+	//创建xml文档 ，并命名一个root节点，设置root节点命名空间
+	bool createXmlRootNode(std::string name, std::string url = "");
+	//添加元素
+	bool addXmlElement(std::string xp, std::string name, std::string v = "");
+	//添加属性
+	bool addXmlAttribute(std::string xp, std::string name, std::string v);
+	//xmltostrng
+	std::string getxmlSrc();
+	//xmltofile
+	bool saveXmlFile(std::string fname,std::string encode);
 public:
 	xmlDocPtr doc;
 
 	xmlXPathContextPtr context;
 	xmlXPathObjectPtr resource;
 	bool isOnlyEntityName;
+
+	std::auto_ptr<xtree::document> createXmlDoc;
 };
 
 gpl::xml::LibXml::LibXml()
@@ -256,22 +268,162 @@ bool gpl::xml::LibXml::clearDomXml()
 
 	std::auto_ptr<xtree::document> doc = xtree::create_document("root");
 
-	
+
 	xtree::element_ptr root = doc->root();
 	xtree::element_ptr c = root->push_back_element("a");
 	c->push_back_text("张长生");
 	c->set_attr("url", "www.baidu.com");
 
 	xtree::element_ptr c2 = root->push_back_element("a");
-	c2->push_back_text("张长");
-	c2->set_attr("url", "www.youku.com");
-	
-	xtree::element_ptr items = doc->root()->find_elem_by_name("a");
-	xtree::element_ptr c1 = items->push_back_element("a2");
-	c1->push_back_text("张长生");
-	c1->set_attr("url", "www.baidu.com");
+ 	c2->push_back_text("张长");
+ 	c2->set_attr("url", "www.youku.com");
+ 	
+ 	xtree::element_ptr items = doc->root()->find_elem_by_name("a");
+ 	xtree::element_ptr c1 = items->push_back_element("a2");
+ 	c1->push_back_text("张长生");
+ 	c1->set_attr("url", "www.baidu.com");
+
+	xtree::element_ptr e = root->find_elem_by_path("a");
+	std::string d = e->name();
+	xtree::element_ptr c3 = e->push_back_element("a3");
+	c3->push_back_text("daybreadk");
+	c3->set_attr("url", "www.leshi.com");
+
+
+	xtree::node_set nodes;
+	root->select_nodes(xtree::xpath("/root/a[2]"), nodes);
+	for (xtree::node_set::iterator i = nodes.begin(); i != nodes.end(); ++i)
+	{
+		xtree::element_ptr e1 = xtree::dynamic_node_cast<xtree::element>(i.ptr());
+		std::string de = e1->name();
+		xtree::element_ptr c4 = e1->push_back_element("a4");
+		//c4->push_back_text("daybreadk");
+		c4->set_attr("url", "www.leshi.com");
+	}
+
 
 	std::string src = doc->str();
+
+	xtree::node_set nodes1;
+	root->select_nodes(xtree::xpath("/root/a[2]/a4"), nodes1);
+	for (xtree::node_set::iterator i = nodes1.begin(); i != nodes1.end(); ++i)
+	{
+		xtree::element_ptr e1 = xtree::dynamic_node_cast<xtree::element>(i.ptr());
+		e1->set_attr("url", "www.zhangchangsheng.com");
+	}
+	std::string src1 = doc->str();
+	return true;
+}
+
+bool gpl::xml::LibXml::createXmlRootNode(std::string name, std::string url /*= ""*/)
+{
+	try
+	{
+		if (name != "" && url == "")
+		{
+			createXmlDoc = xtree::create_document(name);
+		}
+		else if (name != "" && url != "")
+		{
+			createXmlDoc = xtree::create_document(name, url);
+		}
+	}
+	catch (const xtree::dom_error& ex)
+	{
+		std::cout << ex.what() << std::endl;
+		return false;
+	}
+	return true;	
+}
+
+bool gpl::xml::LibXml::addXmlElement(std::string xp, std::string name, std::string v/* = ""*/)
+{
+	try
+	{
+		xtree::element_ptr root = createXmlDoc->root();
+		xtree::node_set nodes;
+		root->select_nodes(xtree::xpath(xp), nodes);
+		for (xtree::node_set::iterator i = nodes.begin(); i != nodes.end(); ++i)
+		{
+			xtree::element_ptr _tempe = xtree::dynamic_node_cast<xtree::element>(i.ptr());
+			xtree::element_ptr c4;
+			if (name != "")
+			{
+				c4 = _tempe->push_back_element(name);
+			}else{
+				return false;
+			}
+			if (v != "")
+			{
+				c4->push_back_text(v);
+			}
+		}
+	}
+	catch (const xtree::dom_error& ex)
+	{
+		std::cout << ex.what() << std::endl;
+		return false;
+	}
+	return true;
+}
+
+bool gpl::xml::LibXml::addXmlAttribute(std::string xp, std::string name, std::string v)
+{
+	try
+	{
+		xtree::element_ptr root = createXmlDoc->root();
+		xtree::node_set nodes;
+		root->select_nodes(xtree::xpath(xp), nodes);
+		for (xtree::node_set::iterator i = nodes.begin(); i != nodes.end(); ++i)
+		{
+			xtree::element_ptr _tempe = xtree::dynamic_node_cast<xtree::element>(i.ptr());
+			if (name != "" && v != "")
+			{
+				_tempe->set_attr(name,v);
+			}
+			else{ return false; }
+		}
+	}
+	catch (const xtree::dom_error& ex)
+	{
+		std::cout << ex.what() << std::endl;
+		return false;
+	}
+	return true;
+}
+
+std::string gpl::xml::LibXml::getxmlSrc()
+{
+	try
+	{
+		if (!createXmlDoc->empty())
+		{
+			return createXmlDoc->str();
+		}
+		else{ return ""; }
+	}
+	catch (const xtree::dom_error& ex)
+	{
+		std::cout << ex.what() << std::endl;
+		return ex.what();
+	}	
+}
+
+bool gpl::xml::LibXml::saveXmlFile(std::string fname,std::string encode)
+{
+	try
+	{
+		if (!createXmlDoc->empty())
+		{
+			createXmlDoc->save_to_file(fname, encode);
+		}
+		else{ return false; }
+	}
+	catch (const xtree::dom_error& ex)
+	{
+		std::cout << ex.what() << std::endl;
+		return false;
+	}
 	return true;
 }
 
@@ -930,7 +1082,33 @@ void gpl::xml::ltoa(const long& l, std::string& str)
 	return;
 }
 
-bool gpl::xml::createXml()
+bool gpl::xml::createXml(std::string name /*= ""*/, std::string url /*= ""*/)
 {
-	return m_xml->clearDomXml();
+	return m_xml->createXmlRootNode(name, url);
+}
+
+bool gpl::xml::addElement(std::string par, std::string name, std::string v/*=""*/)
+{
+	return m_xml->addXmlElement(par, name, v);
+}
+
+bool gpl::xml::addAttribute(std::string par, std::string name, std::string v)
+{
+	return m_xml->addXmlAttribute(par, name, v);
+}
+
+bool gpl::xml::saveXmlToFile(std::string filename, std::string encode)
+{
+	return m_xml->saveXmlFile(filename, encode);
+}
+
+bool gpl::xml::saveXmlToBuffer(std::string &src)
+{
+	src = m_xml->getxmlSrc();
+	if (src == "")
+	{
+		return false;
+	}else{
+		return true;
+	}
 }

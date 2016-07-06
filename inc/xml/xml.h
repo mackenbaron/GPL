@@ -454,15 +454,66 @@ namespace gpl
 		*/
 		bool dumpXPath(FILE* f = stdout);
 		/**
-		* 设置在读取数据时仅仅读取实体名字的标记.
-		*@param b true:仅仅读取实体名字;false:读取实体扩展后的内容
-		*@return 成功返回true,否则false;
+			*  @date        2016/07/06 16:28
+			*  @brief       创建xml文档
+			*  @param[in]   name[string] root节点名字
+			*  @param[in]	url[string] root节点的命名空间
+			*  @return      成功返回true，否则为false
+			*  @pre         段落
+			*  @remarks     评论
+			*  @see         参考内容
+			*  @test        测试
+			*/
+		bool createXml(std::string name = "", std::string url = "");
+		/**
+		*  @date        2016/07/06 16:28
+		*  @brief       创建元素
+		*  @param[in]	par[string]要添加节点的位置，遵循xpaht语法
+		*  @param[in]   name[string] 节点名字
+		*  @param[in]	v[string]节点值，可以为空 
+		*  @return      成功返回true，否则为false
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
 		*/
-		//void setOnlyGetEntityNameFlag(bool b);
-		
-		///////////////////////////////////////////////////////////////
-
-		bool createXml();
+		bool addElement(std::string par,std::string name,std::string v="");
+		/**
+		*  @date        2016/07/06 16:28
+		*  @brief       创建元素属性
+		*  @param[in]	par[string]要添加属性的位置，遵循xpaht语法
+		*  @param[in]   name[string] 属性名字
+		*  @param[in]	v[string]属性值
+		*  @return      成功返回true，否则为false
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool addAttribute(std::string par,std::string name,std::string v);
+		/**
+		*  @date        2016/07/06 16:28
+		*  @brief       保存xml数据为文件
+		*  @param[in]	filename[string]文件名字
+		*  @param[in]   encode[string] 编码
+		*  @return      成功返回true，否则为false
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool saveXmlToFile(std::string filename,std::string encode);
+		/**
+		*  @date        2016/07/06 16:28
+		*  @brief       保存xml数据为内存
+		*  @param[out]	src[string]内存
+		*  @return      成功返回true，否则为false
+		*  @pre         段落
+		*  @remarks     评论
+		*  @see         参考内容
+		*  @test        测试
+		*/
+		bool saveXmlToBuffer(std::string &src);
 	protected:
 		class LibXml;
 		LibXml* m_xml;

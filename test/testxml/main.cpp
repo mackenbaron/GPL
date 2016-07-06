@@ -33,7 +33,22 @@ void parseXml()
 void createxml()
 {
 	xml xmlapi;
-	xmlapi.createXml();
+	xmlapi.createXml("root");
+
+	xmlapi.addElement("/root","people");
+	xmlapi.addElement("/root/people[1]", "name", "张三");
+	xmlapi.addElement("/root/people[1]", "age", "12");
+	xmlapi.addElement("/root/people[1]", "gender", "男");
+	xmlapi.addElement("/root/people[1]", "address", "北京朝阳");
+
+	xmlapi.addElement("/root", "people");
+	xmlapi.addAttribute("/root/people[2]", "name", "张四");
+	xmlapi.addAttribute("/root/people[2]", "age", "78");
+	xmlapi.addAttribute("/root/people[2]", "gender", "女");
+	xmlapi.addAttribute("/root/people[2]", "address", "天津");
+
+	std::string src = "";
+	xmlapi.saveXmlToBuffer(src);
 }
 int main(int argc, char **argv)
 {	
