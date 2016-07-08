@@ -1,0 +1,1672 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>GPL: gpl::util类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="coffee_bean_77.268292682927px_1164279_easyicon.net.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">GPL
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>类列表</span></a></li>
+      <li><a href="classes.html"><span>类索引</span></a></li>
+      <li><a href="functions.html"><span>类成员</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacegpl.html">gpl</a></li><li class="navelem"><a class="el" href="classgpl_1_1util.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classgpl_1_1util-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">gpl::util类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>常用函数公共类，其中包括了字符转换，ini文件读写，字符串查找替换，字符串分割符提取，url中文编码解码，读写文件，json格式验证，文件校验，文件加密解密  
+ <a href="classgpl_1_1util.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="util_8h_source.html">util.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a2de66417a301504990b2ae2540247f16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a2de66417a301504990b2ae2540247f16">readINIFileString</a> (std::string path, std::string root, std::string userkey, std::string &amp;uservalue, std::string def)</td></tr>
+<tr class="memdesc:a2de66417a301504990b2ae2540247f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">读出ini文件string类型  <a href="#a2de66417a301504990b2ae2540247f16">更多...</a><br /></td></tr>
+<tr class="separator:a2de66417a301504990b2ae2540247f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38d9b131fa37bce56b168492caa53267"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a38d9b131fa37bce56b168492caa53267">readINIFileInt</a> (std::string path, std::string root, std::string userkey, int &amp;userValue, int def)</td></tr>
+<tr class="memdesc:a38d9b131fa37bce56b168492caa53267"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取ini文件int类型  <a href="#a38d9b131fa37bce56b168492caa53267">更多...</a><br /></td></tr>
+<tr class="separator:a38d9b131fa37bce56b168492caa53267"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83355e8e57c29b7598c5dc02d932ceb4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a83355e8e57c29b7598c5dc02d932ceb4">writeINIFileString</a> (std::string path, std::string root, std::string userkey, std::string value)</td></tr>
+<tr class="memdesc:a83355e8e57c29b7598c5dc02d932ceb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">将string字符串写入ini文件  <a href="#a83355e8e57c29b7598c5dc02d932ceb4">更多...</a><br /></td></tr>
+<tr class="separator:a83355e8e57c29b7598c5dc02d932ceb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03780e824f7e5dd2e82dffd0fb6dfd40"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a03780e824f7e5dd2e82dffd0fb6dfd40">writeINIFileInt</a> (std::string path, std::string root, std::string userkey, int value)</td></tr>
+<tr class="memdesc:a03780e824f7e5dd2e82dffd0fb6dfd40"><td class="mdescLeft">&#160;</td><td class="mdescRight">将int数值写入ini文件  <a href="#a03780e824f7e5dd2e82dffd0fb6dfd40">更多...</a><br /></td></tr>
+<tr class="separator:a03780e824f7e5dd2e82dffd0fb6dfd40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a439f26ac7a8ec74cc028cc3feef3514b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a439f26ac7a8ec74cc028cc3feef3514b">UTF_8ToUnicode</a> (wchar_t *pOut, char *pText)</td></tr>
+<tr class="memdesc:a439f26ac7a8ec74cc028cc3feef3514b"><td class="mdescLeft">&#160;</td><td class="mdescRight">将单字节utf-8的编码转换成双字节Unicode的编码  <a href="#a439f26ac7a8ec74cc028cc3feef3514b">更多...</a><br /></td></tr>
+<tr class="separator:a439f26ac7a8ec74cc028cc3feef3514b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a379f5442729495a85269f7aa8e3645f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a379f5442729495a85269f7aa8e3645f0">UnicodeToUTF_8</a> (char *pOut, wchar_t *pText)</td></tr>
+<tr class="memdesc:a379f5442729495a85269f7aa8e3645f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">将双字节unicode的编码转换成单字节utf-8的编码(单个字符输入/输出)  <a href="#a379f5442729495a85269f7aa8e3645f0">更多...</a><br /></td></tr>
+<tr class="separator:a379f5442729495a85269f7aa8e3645f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50287a77ccc3d9021cd252fcfdce041a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a50287a77ccc3d9021cd252fcfdce041a">UnicodeToGB2312</a> (char *pOut, wchar_t uData)</td></tr>
+<tr class="memdesc:a50287a77ccc3d9021cd252fcfdce041a"><td class="mdescLeft">&#160;</td><td class="mdescRight">将unicode编码转换成GB2312的编码(单个字符输入/输出)  <a href="#a50287a77ccc3d9021cd252fcfdce041a">更多...</a><br /></td></tr>
+<tr class="separator:a50287a77ccc3d9021cd252fcfdce041a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7a241f2b18bbd49daeb4151615a6f77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#ae7a241f2b18bbd49daeb4151615a6f77">Gb2312ToUnicode</a> (wchar_t *pOut, char *gbBuffer)</td></tr>
+<tr class="memdesc:ae7a241f2b18bbd49daeb4151615a6f77"><td class="mdescLeft">&#160;</td><td class="mdescRight">将GB2312编码转换成Unicode编码(单个字符输入/输出)  <a href="#ae7a241f2b18bbd49daeb4151615a6f77">更多...</a><br /></td></tr>
+<tr class="separator:ae7a241f2b18bbd49daeb4151615a6f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c63859ca7e0ccb0d99428fa5cbb8c78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a8c63859ca7e0ccb0d99428fa5cbb8c78">GB2312ToUTF_8</a> (std::string &amp;pOut, char *pText, int pLen)</td></tr>
+<tr class="memdesc:a8c63859ca7e0ccb0d99428fa5cbb8c78"><td class="mdescLeft">&#160;</td><td class="mdescRight">将GB2312编码转换成utf-8编码（多个字符输入/输出）  <a href="#a8c63859ca7e0ccb0d99428fa5cbb8c78">更多...</a><br /></td></tr>
+<tr class="separator:a8c63859ca7e0ccb0d99428fa5cbb8c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3e7c6513dbcd4e7abeae68b330b40f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#ad3e7c6513dbcd4e7abeae68b330b40f6">UTF_8ToGB2312</a> (std::string &amp;pOut, char *pText, int pLen)</td></tr>
+<tr class="memdesc:ad3e7c6513dbcd4e7abeae68b330b40f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">将utf-8编码转换成GB2312编码（多个字符输入/输出）  <a href="#ad3e7c6513dbcd4e7abeae68b330b40f6">更多...</a><br /></td></tr>
+<tr class="separator:ad3e7c6513dbcd4e7abeae68b330b40f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9c14108c30ec5183aa5e29f9f6084e3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#af9c14108c30ec5183aa5e29f9f6084e3">intTOStirng</a> (const int n)</td></tr>
+<tr class="memdesc:af9c14108c30ec5183aa5e29f9f6084e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">将int转成的string  <a href="#af9c14108c30ec5183aa5e29f9f6084e3">更多...</a><br /></td></tr>
+<tr class="separator:af9c14108c30ec5183aa5e29f9f6084e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfa652969e895981ae14b85c679d62ab"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#adfa652969e895981ae14b85c679d62ab">DoubleTOString</a> (const double n)</td></tr>
+<tr class="memdesc:adfa652969e895981ae14b85c679d62ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">将double转成的string  <a href="#adfa652969e895981ae14b85c679d62ab">更多...</a><br /></td></tr>
+<tr class="separator:adfa652969e895981ae14b85c679d62ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af66981436a02068c72dbe325d7a9d9ee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#af66981436a02068c72dbe325d7a9d9ee">StringToInt</a> (const char *src)</td></tr>
+<tr class="memdesc:af66981436a02068c72dbe325d7a9d9ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">将string转成的数字  <a href="#af66981436a02068c72dbe325d7a9d9ee">更多...</a><br /></td></tr>
+<tr class="separator:af66981436a02068c72dbe325d7a9d9ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28ca704a7a6981b3faa8e740a108bbb4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a28ca704a7a6981b3faa8e740a108bbb4">StringTODouble</a> (const char *src)</td></tr>
+<tr class="memdesc:a28ca704a7a6981b3faa8e740a108bbb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">将string转成的数字  <a href="#a28ca704a7a6981b3faa8e740a108bbb4">更多...</a><br /></td></tr>
+<tr class="separator:a28ca704a7a6981b3faa8e740a108bbb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa6f7af891b0369fdec8031200253ccb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#afa6f7af891b0369fdec8031200253ccb">split</a> (std::string &amp;str, std::string &amp;pattern)</td></tr>
+<tr class="memdesc:afa6f7af891b0369fdec8031200253ccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">以分割符来切分字符串  <a href="#afa6f7af891b0369fdec8031200253ccb">更多...</a><br /></td></tr>
+<tr class="separator:afa6f7af891b0369fdec8031200253ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e8d0ba476293b6e34712e75a0ee4cd0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a6e8d0ba476293b6e34712e75a0ee4cd0">GBKToUTF8</a> (const std::string &amp;strGBK)</td></tr>
+<tr class="memdesc:a6e8d0ba476293b6e34712e75a0ee4cd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">将GBK编码转换成UTF-8编码  <a href="#a6e8d0ba476293b6e34712e75a0ee4cd0">更多...</a><br /></td></tr>
+<tr class="separator:a6e8d0ba476293b6e34712e75a0ee4cd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab37e6e9532e84bfbe035a02dc62753a5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#ab37e6e9532e84bfbe035a02dc62753a5">UTF8ToGBK</a> (const std::string &amp;strUTF8)</td></tr>
+<tr class="memdesc:ab37e6e9532e84bfbe035a02dc62753a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">将UTF-8编码转换成GBK编码  <a href="#ab37e6e9532e84bfbe035a02dc62753a5">更多...</a><br /></td></tr>
+<tr class="separator:ab37e6e9532e84bfbe035a02dc62753a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73a9fcdbb4dd0d3b87dfad942b48e5e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a73a9fcdbb4dd0d3b87dfad942b48e5e3">ReplaceSrc</a> (std::string &amp;s1, const std::string &amp;s2, const std::string &amp;s3)</td></tr>
+<tr class="memdesc:a73a9fcdbb4dd0d3b87dfad942b48e5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">查找字符串，并替换  <a href="#a73a9fcdbb4dd0d3b87dfad942b48e5e3">更多...</a><br /></td></tr>
+<tr class="separator:a73a9fcdbb4dd0d3b87dfad942b48e5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab164e88af9c40e19b61d176c83a55437"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#ab164e88af9c40e19b61d176c83a55437">Base64Encode</a> (const char *Data, int DataByte)</td></tr>
+<tr class="memdesc:ab164e88af9c40e19b61d176c83a55437"><td class="mdescLeft">&#160;</td><td class="mdescRight">对明文字符串进行base64编码  <a href="#ab164e88af9c40e19b61d176c83a55437">更多...</a><br /></td></tr>
+<tr class="separator:ab164e88af9c40e19b61d176c83a55437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99a1731e4c9df90926ddc0f1fb26fe9b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a99a1731e4c9df90926ddc0f1fb26fe9b">Base64Decode</a> (const char *Data, int DataByte, int &amp;OutByte)</td></tr>
+<tr class="memdesc:a99a1731e4c9df90926ddc0f1fb26fe9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">对base64的编码进行解码成明文  <a href="#a99a1731e4c9df90926ddc0f1fb26fe9b">更多...</a><br /></td></tr>
+<tr class="separator:a99a1731e4c9df90926ddc0f1fb26fe9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54954535e46fa58cd2aa3802bf7de081"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a54954535e46fa58cd2aa3802bf7de081">UrlEncode</a> (const std::string &amp;szToEncode)</td></tr>
+<tr class="memdesc:a54954535e46fa58cd2aa3802bf7de081"><td class="mdescLeft">&#160;</td><td class="mdescRight">将url中的中文进行编码  <a href="#a54954535e46fa58cd2aa3802bf7de081">更多...</a><br /></td></tr>
+<tr class="separator:a54954535e46fa58cd2aa3802bf7de081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae961501efe3cf8e20ecde5d28558abac"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#ae961501efe3cf8e20ecde5d28558abac">UrlDecode</a> (const std::string &amp;szToDecode)</td></tr>
+<tr class="memdesc:ae961501efe3cf8e20ecde5d28558abac"><td class="mdescLeft">&#160;</td><td class="mdescRight">将url中的中文进行解码  <a href="#ae961501efe3cf8e20ecde5d28558abac">更多...</a><br /></td></tr>
+<tr class="separator:ae961501efe3cf8e20ecde5d28558abac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a123c35dc5d92551384391a4c2c39e153"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a123c35dc5d92551384391a4c2c39e153">CheckFormatJson</a> (std::string src)</td></tr>
+<tr class="memdesc:a123c35dc5d92551384391a4c2c39e153"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断json格式正确与否  <a href="#a123c35dc5d92551384391a4c2c39e153">更多...</a><br /></td></tr>
+<tr class="separator:a123c35dc5d92551384391a4c2c39e153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ce21205886a870a8ba50902b55d34dd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a5ce21205886a870a8ba50902b55d34dd">U2A</a> (const std::wstring &amp;str)</td></tr>
+<tr class="memdesc:a5ce21205886a870a8ba50902b55d34dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">将unicode字符串转换完成ascii字符串  <a href="#a5ce21205886a870a8ba50902b55d34dd">更多...</a><br /></td></tr>
+<tr class="separator:a5ce21205886a870a8ba50902b55d34dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0abdc5d3bfdf77507505b9913e9d96c"><td class="memItemLeft" align="right" valign="top">std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#ac0abdc5d3bfdf77507505b9913e9d96c">A2U</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:ac0abdc5d3bfdf77507505b9913e9d96c"><td class="mdescLeft">&#160;</td><td class="mdescRight">将ascii字符串转换成unicode字符串  <a href="#ac0abdc5d3bfdf77507505b9913e9d96c">更多...</a><br /></td></tr>
+<tr class="separator:ac0abdc5d3bfdf77507505b9913e9d96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0654e251d84bebbff392f079cd60f985"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a0654e251d84bebbff392f079cd60f985">U2Utf</a> (const std::wstring &amp;wstrUnicode)</td></tr>
+<tr class="memdesc:a0654e251d84bebbff392f079cd60f985"><td class="mdescLeft">&#160;</td><td class="mdescRight">将unicode转成utf-8  <a href="#a0654e251d84bebbff392f079cd60f985">更多...</a><br /></td></tr>
+<tr class="separator:a0654e251d84bebbff392f079cd60f985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e0b5bf72b2195feb46dc22509612d7"><td class="memItemLeft" align="right" valign="top">std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a51e0b5bf72b2195feb46dc22509612d7">Utf2U</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:a51e0b5bf72b2195feb46dc22509612d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">将utf-8转换成unicode  <a href="#a51e0b5bf72b2195feb46dc22509612d7">更多...</a><br /></td></tr>
+<tr class="separator:a51e0b5bf72b2195feb46dc22509612d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a144f2de8570accdc5d74b1c3e7e6b8d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a144f2de8570accdc5d74b1c3e7e6b8d0">SplitStringW</a> (const std::wstring &amp;strSource, const std::wstring &amp;strFlag, std::vector&lt; std::wstring &gt; &amp;paramList)</td></tr>
+<tr class="memdesc:a144f2de8570accdc5d74b1c3e7e6b8d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">对宽字符串进行指定字符进行分割  <a href="#a144f2de8570accdc5d74b1c3e7e6b8d0">更多...</a><br /></td></tr>
+<tr class="separator:a144f2de8570accdc5d74b1c3e7e6b8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ece1cd39f1ce0b0c2e0dd63e58f4d52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a5ece1cd39f1ce0b0c2e0dd63e58f4d52">SplitStringA</a> (const std::string &amp;strSource, const std::string &amp;strFlag, std::vector&lt; std::string &gt; &amp;paramList)</td></tr>
+<tr class="memdesc:a5ece1cd39f1ce0b0c2e0dd63e58f4d52"><td class="mdescLeft">&#160;</td><td class="mdescRight">对字符串进行指定字符进行分割  <a href="#a5ece1cd39f1ce0b0c2e0dd63e58f4d52">更多...</a><br /></td></tr>
+<tr class="separator:a5ece1cd39f1ce0b0c2e0dd63e58f4d52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32f955b5747466247e5ae674646751e1"><td class="memItemLeft" align="right" valign="top">std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a32f955b5747466247e5ae674646751e1">StrReplaceW</a> (const std::wstring &amp;strContent, const std::wstring &amp;strTag, const std::wstring &amp;strReplace)</td></tr>
+<tr class="memdesc:a32f955b5747466247e5ae674646751e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">对宽字符串进行替换  <a href="#a32f955b5747466247e5ae674646751e1">更多...</a><br /></td></tr>
+<tr class="separator:a32f955b5747466247e5ae674646751e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45feb0963f995dd16d69dd9440d592c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#af45feb0963f995dd16d69dd9440d592c">StrReplaceA</a> (const std::string &amp;strContent, const std::string &amp;strTag, const std::string &amp;strReplace)</td></tr>
+<tr class="memdesc:af45feb0963f995dd16d69dd9440d592c"><td class="mdescLeft">&#160;</td><td class="mdescRight">对字符串进行替换  <a href="#af45feb0963f995dd16d69dd9440d592c">更多...</a><br /></td></tr>
+<tr class="separator:af45feb0963f995dd16d69dd9440d592c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad86a28857009c3c793cea642872fc696"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#ad86a28857009c3c793cea642872fc696">ReadFileDate</a> (std::string filePaht, std::string &amp;message, std::string format)</td></tr>
+<tr class="memdesc:ad86a28857009c3c793cea642872fc696"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取文件  <a href="#ad86a28857009c3c793cea642872fc696">更多...</a><br /></td></tr>
+<tr class="separator:ad86a28857009c3c793cea642872fc696"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f691edcd7dfbd03ba7cb3ffcf383187"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a4f691edcd7dfbd03ba7cb3ffcf383187">WriteFileDate</a> (std::string filename, unsigned char *date, int len, std::string format)</td></tr>
+<tr class="memdesc:a4f691edcd7dfbd03ba7cb3ffcf383187"><td class="mdescLeft">&#160;</td><td class="mdescRight">写文件  <a href="#a4f691edcd7dfbd03ba7cb3ffcf383187">更多...</a><br /></td></tr>
+<tr class="separator:a4f691edcd7dfbd03ba7cb3ffcf383187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cfc3d7f049b7adbdb0c9faa42b38fdd"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a2cfc3d7f049b7adbdb0c9faa42b38fdd">ParsingArgsSrc</a> (std::string tmpPara, char *item,...)</td></tr>
+<tr class="memdesc:a2cfc3d7f049b7adbdb0c9faa42b38fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">对程序传入的参数进行解析  <a href="#a2cfc3d7f049b7adbdb0c9faa42b38fdd">更多...</a><br /></td></tr>
+<tr class="separator:a2cfc3d7f049b7adbdb0c9faa42b38fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50215a395b5db6775aee1c1c50b4b939"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a50215a395b5db6775aee1c1c50b4b939">SrcEncrypt</a> (std::string szSource, std::string szPassWord)</td></tr>
+<tr class="memdesc:a50215a395b5db6775aee1c1c50b4b939"><td class="mdescLeft">&#160;</td><td class="mdescRight">对明文字符串进行密码加密  <a href="#a50215a395b5db6775aee1c1c50b4b939">更多...</a><br /></td></tr>
+<tr class="separator:a50215a395b5db6775aee1c1c50b4b939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ccaf07f74d1c1c4e06b2e1f808e8603"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a5ccaf07f74d1c1c4e06b2e1f808e8603">SrcDecrypt</a> (std::string szSource, std::string szPassWord)</td></tr>
+<tr class="memdesc:a5ccaf07f74d1c1c4e06b2e1f808e8603"><td class="mdescLeft">&#160;</td><td class="mdescRight">对加密字符串进行密码解密  <a href="#a5ccaf07f74d1c1c4e06b2e1f808e8603">更多...</a><br /></td></tr>
+<tr class="separator:a5ccaf07f74d1c1c4e06b2e1f808e8603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b243bee6013ea34c181f695f9c9a39"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgpl_1_1util.html#a06b243bee6013ea34c181f695f9c9a39">getFileVerify</a> (std::vector&lt; std::string &gt; &amp;infile, std::vector&lt; <a class="el" href="namespacegpl.html#ae826f4767d9996e4f6efded7040071f5">Result</a> &gt; &amp;outre)</td></tr>
+<tr class="memdesc:a06b243bee6013ea34c181f695f9c9a39"><td class="mdescLeft">&#160;</td><td class="mdescRight">校验文件（多个）的MD5、SHA1、SHA256、CRC32  <a href="#a06b243bee6013ea34c181f695f9c9a39">更多...</a><br /></td></tr>
+<tr class="separator:a06b243bee6013ea34c181f695f9c9a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>常用函数公共类，其中包括了字符转换，ini文件读写，字符串查找替换，字符串分割符提取，url中文编码解码，读写文件，json格式验证，文件校验，文件加密解密 </p>
+<dl class="section author"><dt>作者</dt><dd>DayBreakZhang(<a href="#" onclick="location.href='mai'+'lto:'+'a36'+'53'+'164'+'65'+'@gm'+'ai'+'l.c'+'om'; return false;">a3653<span style="display: none;">.nosp@m.</span>1646<span style="display: none;">.nosp@m.</span>5@gma<span style="display: none;">.nosp@m.</span>il.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2016/05/31 11:01</dd></dl>
+<dl class="section user"><dt>utf-8,GB2312,unicode介绍</dt><dd><div class="fragment"><div class="line">UTF-8：Unicode TransformationFormat-8bit，允许含BOM，但通常不含BOM。是用以解决国际上字符的一种多字节编码，它对英文使用8位（即一个字节），中文使用24为（三个字节）来编码。UTF-8包含全世界所有国家需要用到的字符，是国际编码，通用性强。UTF-8编码的文字可以在各国支持UTF8字符集的浏览器上显示。如，如果是UTF8编码，则在外国人的英文IE上也能显示中文，他们无需下载IE的中文语言支持包。</div><div class="line">GBK是国家标准GB2312基础上扩容后兼容GB2312的标准。GBK的文字编码是用双字节来表示的，即不论中、英文字符均使用双字节来表示，为了区分中文，将其最高位都设定成1。GBK包含全部中文字符，是国家编码，通用性比UTF8差，不过UTF8占用的数据库比GBD大。</div><div class="line">GBK、GB2312等与UTF8之间都必须通过Unicode编码才能相互转换</div><div class="line">GBK、GB2312－－Unicode－－UTF8</div><div class="line">UTF8－－Unicode－－GBK、GB2312</div></div><!-- fragment --> </dd></dl>
+<dl class="section user"><dt>Base64介绍</dt><dd><div class="fragment"><div class="line">Base64是一种用64个字符来表示任意二进制数据的方法。</div><div class="line">用记事本打开exe、jpg、pdf这些文件时，我们都会看到一大堆乱码，因为二进制文件包含很多无法显示和打印的字符，所以，如果要让记事本这样的文本处理软件能处理二进制数据，就需要一个二进制到字符串的转换方法。Base64是一种最常见的二进制编码方法.</div><div class="line">Base64是一种任意二进制到文本字符串的编码方法，常用于在URL、Cookie、网页中传输少量二进制数据。</div></div><!-- fragment --> </dd></dl>
+<dl class="section attention"><dt>注意</dt><dd>函数如果没有指定wchar的函数，要使用转换函数将中文转换 </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug:</a></b></dt><dd>-已解决问题列表<br />
+ -#解决转换函数内存泄露问题 </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>-警告列表<br />
+ -#如果 函数返回/参数 中引用到了函数内部变量指针的使用完成之后要释放 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>-更新列表<br />
+ -#加入加密解密<br />
+ -#加入文件校验算码 </dd></dl>
+
+<p>在文件 <a class="el" href="util_8h_source.html">util.h</a> 第 <a class="el" href="util_8h_source.html#l00079">79</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a class="anchor" id="ac0abdc5d3bfdf77507505b9913e9d96c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::wstring gpl::util::A2U </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将ascii字符串转换成unicode字符串 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:31 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str[string]要进行转换的字符串</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回转码之后字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a99a1731e4c9df90926ddc0f1fb26fe9b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::Base64Decode </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>Data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>DataByte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>OutByte</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对base64的编码进行解码成明文 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:22 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Data[char*]输入要解码的字符串</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">DataByte[int]要解码字符串的长度</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">OutByte[int]解码之后字符串长度</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回解码之后字符串 </dd></dl>
+<dl class="section user"><dt>参考实例</dt><dd><div class="fragment"><div class="line">std::string src=<span class="stringliteral">&quot;ABDCE_CES&quot;</span>;</div><div class="line">std::string result=<a class="code" href="classgpl_1_1util.html#a99a1731e4c9df90926ddc0f1fb26fe9b">Base64Decode</a>(src,src.size());<span class="comment">//result=&quot;DayBreak&quot;;</span></div></div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab164e88af9c40e19b61d176c83a55437"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::Base64Encode </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>Data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>DataByte</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对明文字符串进行base64编码 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:15 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Data[char*]输入要编码的字符串</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">BataByet[int]要编码字符串的长度</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回编码之后字符串 </dd></dl>
+<dl class="section user"><dt>参考实例</dt><dd><div class="fragment"><div class="line">std::string src=<span class="stringliteral">&quot;DayBreak&quot;</span>;</div><div class="line">std::string result=<a class="code" href="classgpl_1_1util.html#ab164e88af9c40e19b61d176c83a55437">Base64Encode</a>(src,src.size());<span class="comment">//result=&quot;ABDCE_CES&quot;;</span></div></div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a123c35dc5d92551384391a4c2c39e153"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gpl::util::CheckFormatJson </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>判断json格式正确与否 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:31 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src[string]要进行判断的json字符串</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回true，否则为false </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adfa652969e895981ae14b85c679d62ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::DoubleTOString </td>
+          <td>(</td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将double转成的string </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 11:38 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n[double]</td><td>输入要转化的double数字 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回转化之后的字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae7a241f2b18bbd49daeb4151615a6f77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpl::util::Gb2312ToUnicode </td>
+          <td>(</td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>pOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>gbBuffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将GB2312编码转换成Unicode编码(单个字符输入/输出) </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 10:17 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">gbBuffer[char*]</td><td>输入GB2312编码字符 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pOut[wchar_t*]</td><td>输出Unicode编码字符 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#输出一个单字节GB2312字符<br />
+ -#输入双字节unicode字符 </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>使用这个函数可以将GB2312字符转换成unicode </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8c63859ca7e0ccb0d99428fa5cbb8c78"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpl::util::GB2312ToUTF_8 </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>pOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pText</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pLen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将GB2312编码转换成utf-8编码（多个字符输入/输出） </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 10:41 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pText[char*]</td><td>输入GB2312的字符串指针（std::string src.c_src()） </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pLen[int]输入pText字符串的长度（std::string</td><td>src.size()） </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pOut[string&amp;]</td><td>输出转换之后的字符 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#输入多个字符指针<br />
+ -#流程：GB2312-&gt;Unicode-&gt;Utf-8 </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>使用这个函数可以将GB2312编码转换成utf-8编码 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6e8d0ba476293b6e34712e75a0ee4cd0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::GBKToUTF8 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>strGBK</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将GBK编码转换成UTF-8编码 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 13:54 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">strGBK[string&amp;]</td><td>输入GBK编码格式的字符串 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回编码之后的字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a06b243bee6013ea34c181f695f9c9a39"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gpl::util::getFileVerify </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>infile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="namespacegpl.html#ae826f4767d9996e4f6efded7040071f5">Result</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>outre</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>校验文件（多个）的MD5、SHA1、SHA256、CRC32 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 15:03 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">infile[vector&lt;string&gt;]校验文件列表</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">outre[vector&lt;Result&gt;]校验结果</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>- 0为成功 - 其它为失败 在Result中的strError得知错误 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="structgpl_1_1_result_data.html" title="校验文件返回结果的结构体 ">gpl::ResultData</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af9c14108c30ec5183aa5e29f9f6084e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::intTOStirng </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将int转成的string </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 11:38 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n[int]</td><td>输入要转化的int数字 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回转化之后的字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2cfc3d7f049b7adbdb0c9faa42b38fdd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::vector&lt;std::string&gt; &gt; gpl::util::ParsingArgsSrc </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>tmpPara</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对程序传入的参数进行解析 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:59 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tmpPara[string]</td><td>待解析的参数列表 </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad86a28857009c3c793cea642872fc696"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gpl::util::ReadFileDate </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>filePaht</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>format</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>读取文件 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:44 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">filPaht[string]文件路径</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">format[string]读取模式</td><td><ul>
+<li>r 读取</li>
+<li>w 可写</li>
+<li>a 添加</li>
+<li>t 文本模式(不能与 b 联用)</li>
+<li>b 二进制模式(不能与 t 联用) </li>
+</ul>
+</td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">message[string&amp;]读取内容</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>0 是成功，其它失败 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a38d9b131fa37bce56b168492caa53267"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpl::util::readINIFileInt </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>userkey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>userValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>def</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>读取ini文件int类型 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/05/31 13:41 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">path[string]</td><td>ini文件路径，绝对/相对 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">root[string]</td><td>ini文件的节点名字，e.g [Data] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">userkey[string]</td><td>ini节点key的名字， e.g Port= </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">uservalue[int</td><td>&amp;] 返回节点key对应该的值 e.g 8080 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">def[int]</td><td>节点key对应的值为空时使用def中的值做为默认 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#中文需要转换<br />
+ -#文件路径一写要能找到 </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>使用这个函数可以读取int类型的key </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+<dl class="section user"><dt>代码实例</dt><dd><div class="fragment"><div class="line"><span class="keywordtype">int</span> _tempDSN;</div><div class="line"><a class="code" href="classgpl_1_1util.html#a2de66417a301504990b2ae2540247f16">readINIFileString</a>(<span class="stringliteral">&quot;.\\config&quot;</span>,<span class="stringliteral">&quot;Net&quot;</span>,<span class="stringliteral">&quot;DSN&quot;</span>,_tempDSN,8080);</div></div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2de66417a301504990b2ae2540247f16"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpl::util::readINIFileString </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>userkey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>uservalue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>def</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>读出ini文件string类型 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/05/31 11:03 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">path[string]</td><td>ini文件路径，绝对/相对 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">root[string]</td><td>ini文件的节点名字，e.g [Data] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">userkey[string]</td><td>ini节点key的名字， e.g DSN= </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">uservalue[string</td><td>&amp;] 返回节点key对应该的值 e.g 192.168.0.1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">def[string]</td><td>节点key对应的值为空时使用def中的值做为默认 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#中文需要转换<br />
+ -#文件路径一写要能找到 </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>使用这个函数可以读取string类型的key </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+<dl class="section user"><dt>代码实例</dt><dd><div class="fragment"><div class="line">std::string _tempDSN;</div><div class="line"><a class="code" href="classgpl_1_1util.html#a2de66417a301504990b2ae2540247f16">readINIFileString</a>(<span class="stringliteral">&quot;.\\config&quot;</span>,<span class="stringliteral">&quot;Net&quot;</span>,<span class="stringliteral">&quot;DSN&quot;</span>,_tempDSN,<span class="stringliteral">&quot;127.0.0.1&quot;</span>);</div></div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a73a9fcdbb4dd0d3b87dfad942b48e5e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpl::util::ReplaceSrc </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>s3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>查找字符串，并替换 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:01 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s1[string&amp;]输入待替换的完整字符串</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s2[string&amp;]输入要替换的原字符</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s3[string&amp;]输入要替换的目标字符</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>对字符串进行查找并替换 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afa6f7af891b0369fdec8031200253ccb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; gpl::util::split </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>pattern</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>以分割符来切分字符串 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 13:48 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str[string&amp;]</td><td>输入的字符串，使用特定且相同的字符进行分割 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pattern[string&amp;]</td><td>输入分割符 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回分割的结果 </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#分割符相同 </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>可使用这个函数对“1，2，34，5，6”这样的字符串进行分割 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+<dl class="section user"><dt>参考实例</dt><dd><div class="fragment"><div class="line">std::string src =<span class="stringliteral">&quot;1,2.1,315,45,21.0,548.0&quot;</span>;</div><div class="line">std::vector&lt;std::stirng&gt; result = <a class="code" href="classgpl_1_1util.html#afa6f7af891b0369fdec8031200253ccb">split</a>(src,<span class="stringliteral">&quot;,&quot;</span>);<span class="comment">//result[0]=1;result[1]=2.1</span></div></div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5ece1cd39f1ce0b0c2e0dd63e58f4d52"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gpl::util::SplitStringA </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>strSource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>strFlag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>paramList</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对字符串进行指定字符进行分割 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:38 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">strSource[string]要拆分的原字符串</td><td></td></tr>
+    <tr><td class="paramdir"></td><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a144f2de8570accdc5d74b1c3e7e6b8d0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gpl::util::SplitStringW </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>strSource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>strFlag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::wstring &gt; &amp;&#160;</td>
+          <td class="paramname"><em>paramList</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对宽字符串进行指定字符进行分割 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:38 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">strSource[wstring]要拆分的原字符串</td><td></td></tr>
+    <tr><td class="paramdir"></td><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5ccaf07f74d1c1c4e06b2e1f808e8603"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::SrcDecrypt </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>szSource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>szPassWord</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对加密字符串进行密码解密 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 15:03 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">szSource[string]要解密的明文字符串</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">szPassWord[string]解密的密码</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>解密之的字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a50215a395b5db6775aee1c1c50b4b939"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::SrcEncrypt </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>szSource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>szPassWord</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对明文字符串进行密码加密 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 15:03 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">szSource[string]要加密的明文字符串</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">szPassWord[string]加密的密码</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>加密之的字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a28ca704a7a6981b3faa8e740a108bbb4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gpl::util::StringTODouble </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将string转成的数字 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 11:38 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src[char*]</td><td>输入要转化的字符串 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回转化之后的数字 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af66981436a02068c72dbe325d7a9d9ee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gpl::util::StringToInt </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将string转成的数字 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 11:38 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src[char*]</td><td>输入要转化的字符串 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回转化之后的数字 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af45feb0963f995dd16d69dd9440d592c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::StrReplaceA </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>strContent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>strTag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>strReplace</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对字符串进行替换 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:38 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">strContent[string]要替换的原字符串</td><td></td></tr>
+    <tr><td class="paramdir"></td><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a32f955b5747466247e5ae674646751e1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::wstring gpl::util::StrReplaceW </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>strContent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>strTag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>strReplace</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对宽字符串进行替换 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:38 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">strContent[wstring]要替换的原字符串</td><td></td></tr>
+    <tr><td class="paramdir"></td><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5ce21205886a870a8ba50902b55d34dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::U2A </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将unicode字符串转换完成ascii字符串 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:31 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str[wstring]要进转码的字符串</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回转码之后字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0654e251d84bebbff392f079cd60f985"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::U2Utf </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>wstrUnicode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将unicode转成utf-8 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:31 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">wstrUnicode[wstring]要进行转码的字符串</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回转码之后的字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a50287a77ccc3d9021cd252fcfdce041a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpl::util::UnicodeToGB2312 </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t&#160;</td>
+          <td class="paramname"><em>uData</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将unicode编码转换成GB2312的编码(单个字符输入/输出) </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 10:13 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">uDate[wchr_t*]</td><td>输入Unicode编码数据 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pOut[char*]</td><td>输出GB2312编码数据 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#输入双字节unicode字符<br />
+ -#输出一个单字节GB2312字符 </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>使用这个函数可以将unicode字符转换成GB2312 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a379f5442729495a85269f7aa8e3645f0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpl::util::UnicodeToUTF_8 </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>pText</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将双字节unicode的编码转换成单字节utf-8的编码(单个字符输入/输出) </p>
+<dl class="section date"><dt>日期</dt><dd>2016/05/31 14:26 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pText[wchar_t*]传入一个unicode编码的双字节</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pOut[char*]输出utf-8的编码单字节</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#输入双字节unicode字符<br />
+ -#输出一个单字节utf-8字符 </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>使用这个函数可以将unicode wchar=&gt;char utf-8 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae961501efe3cf8e20ecde5d28558abac"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::UrlDecode </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>szToDecode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将url中的中文进行解码 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:28 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">szToEncode[string&amp;]要进行解码的字符串</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回解码之后字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a54954535e46fa58cd2aa3802bf7de081"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::UrlEncode </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>szToEncode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将url中的中文进行编码 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:28 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">szToEncode[string&amp;]要进行编码的字符串</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回编码之后字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a51e0b5bf72b2195feb46dc22509612d7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::wstring gpl::util::Utf2U </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将utf-8转换成unicode </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:31 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str[string]要进行转码的字符串</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回转码之后的字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab37e6e9532e84bfbe035a02dc62753a5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gpl::util::UTF8ToGBK </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>strUTF8</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将UTF-8编码转换成GBK编码 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 13:54 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">strGBK[string&amp;]</td><td>输入UTF-8编码格式的字符串 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回编码之后的字符串 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad3e7c6513dbcd4e7abeae68b330b40f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpl::util::UTF_8ToGB2312 </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>pOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pText</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pLen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将utf-8编码转换成GB2312编码（多个字符输入/输出） </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 10:50 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pText[char*]输入utf-8编码格式字符串</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pLen[int]输入pText的字符串长度</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pOut[string&amp;]输出转换之后的字符串</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#输入多个字符指针<br />
+ -#流程：UTF-8-&gt;Unicode-&gt;GB2312 </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>使用这个函数可以将UTF-8编码转换成GB2312编码 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a439f26ac7a8ec74cc028cc3feef3514b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpl::util::UTF_8ToUnicode </td>
+          <td>(</td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>pOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pText</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将单字节utf-8的编码转换成双字节Unicode的编码 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/05/31 14:07 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">pOut[wchar_t*]</td><td>由char*转换wchar*的存放地址 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pTest[char*]</td><td>传入一个utf-8的字符 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#传入的单个char <br />
+ -#输出的一个单个的wchar </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>使用这个函数可以将 utf-8 char=&gt;wcahr </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4f691edcd7dfbd03ba7cb3ffcf383187"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gpl::util::WriteFileDate </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>date</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>format</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>写文件 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/06/01 14:44 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename[string]文件路径</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">format[string]读取模式</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a03780e824f7e5dd2e82dffd0fb6dfd40"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gpl::util::writeINIFileInt </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>userkey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将int数值写入ini文件 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/05/31 13:49 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">path[string]</td><td>ini文件路径，绝对/相对 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">root[string]</td><td>ini文件的节点名字，e.g [Data] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">userkey[string]</td><td>ini节点key的名字， e.g Port= </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value[int]</td><td>ini节点key的值， e.g 8000 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#中文需要转换<br />
+ -#文件路径一写要能找到 </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>使用这个函数可以读取int类型的key </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+<dl class="section user"><dt>代码实例</dt><dd><div class="fragment"><div class="line"><span class="keywordtype">int</span> _tempDSN=8000;</div><div class="line"><a class="code" href="classgpl_1_1util.html#a83355e8e57c29b7598c5dc02d932ceb4">writeINIFileString</a>(<span class="stringliteral">&quot;.\\config&quot;</span>,<span class="stringliteral">&quot;Net&quot;</span>,<span class="stringliteral">&quot;DSN&quot;</span>,_tempDSN);</div></div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a83355e8e57c29b7598c5dc02d932ceb4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gpl::util::writeINIFileString </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>userkey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将string字符串写入ini文件 </p>
+<dl class="section date"><dt>日期</dt><dd>2016/05/31 13:49 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">path[string]</td><td>ini文件路径，绝对/相对 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">root[string]</td><td>ini文件的节点名字，e.g [Data] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">userkey[string]</td><td>ini节点key的名字， e.g Port= </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value[string]</td><td>ini节点key的值， e.g 8000 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>void </dd></dl>
+<dl class="section pre"><dt>前置条件</dt><dd>-#中文需要转换<br />
+ -#文件路径一写要能找到 </dd></dl>
+<dl class="section remark"><dt>备注</dt><dd>使用这个函数可以读取int类型的key </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>参考内容 </dd></dl>
+<dl class="section user"><dt>代码实例</dt><dd><div class="fragment"><div class="line">std::string _tempDSN=<span class="stringliteral">&quot;192.168.0.25&quot;</span>;</div><div class="line"><a class="code" href="classgpl_1_1util.html#a83355e8e57c29b7598c5dc02d932ceb4">writeINIFileString</a>(<span class="stringliteral">&quot;.\\config&quot;</span>,<span class="stringliteral">&quot;Net&quot;</span>,<span class="stringliteral">&quot;DSN&quot;</span>,_tempDSN);</div></div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>inc/util/<a class="el" href="util_8h_source.html">util.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>
