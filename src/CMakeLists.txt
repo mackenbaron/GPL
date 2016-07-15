@@ -6,5 +6,7 @@ add_subdirectory(log)
 add_subdirectory(xml)
 #加入json目录
 add_subdirectory(json)
+#加入db目录
+add_subdirectory(DataBase)
 
 
