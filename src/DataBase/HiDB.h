@@ -49,7 +49,7 @@ typedef std::function<void(HiDBLogType,const char*)> HiDBLogFun;
 *    @li 修复多次close时崩溃的问题
 *
 */
-class HI_DB_EXPORT  HiDB
+class  HiDB
 {
 public:
 

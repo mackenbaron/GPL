@@ -1,8 +1,8 @@
 ﻿#include <stdarg.h>
-#include "DB/HiDB.h"
+#include "HiDB.h"
 #include "HiDBFactory.h"
 #include "HiDBImpl.h"
-#include "../common/HiDBMacro.h"
+#include "HiDBMacro.h"
 
 using namespace std;
 

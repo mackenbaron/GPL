@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "db/HiDBCommon.h"
+#include "HiDBCommon.h"
 
 class HiDBImpl;
 

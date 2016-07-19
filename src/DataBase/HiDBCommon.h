@@ -5,14 +5,6 @@
 * @{
 */ 
 
-#ifndef HI_DB_EXPORT
-#ifdef HI_DB_DLL_API
-#define HI_DB_EXPORT  __declspec(dllexport)
-#else
-#define HI_DB_EXPORT  __declspec(dllimport)
-#endif	
-#endif
-
 #include <string>
 #include <vector>
 #include <map>
@@ -36,7 +28,7 @@ typedef std::vector<HiDBMap> HiDBTable; /**<  查询结果 */
 #endif
 
 /** @brief 数据库操作异常 */
-class HI_DB_EXPORT HiDBException: public std::exception
+class HiDBException: public std::exception
 {
 public:
 	HiDBException();

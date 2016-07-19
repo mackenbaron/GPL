@@ -14,7 +14,7 @@
 * @{
 */ 
 
-#include "DB/HiDB.h"
+#include "HiDB.h"
 class HiCritical;
 /**
 * @brief 数据库操作实现类接口类，声明数据库操作实现类的接口

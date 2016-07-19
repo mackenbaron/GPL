@@ -1,6 +1,6 @@
 ﻿#include "HiDBImpl.h"
 
-#include "../Common/HiCritical.h"
+#include "HiCritical.h"
 
 
 static void defaultFun(HiDBLogType type,const char* ex)

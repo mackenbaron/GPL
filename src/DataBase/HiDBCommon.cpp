@@ -1,4 +1,4 @@
-﻿#include "DB/HiDBCommon.h"
+﻿#include "HiDBCommon.h"
 
 #include <sstream>
 

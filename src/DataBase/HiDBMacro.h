@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "db/HiDBCommon.h"
+#include "HiDBCommon.h"
 
 /** @brief 异常语句宏 */
 #define HiDBHelperOnError_void(ps, script,sql, id) \
