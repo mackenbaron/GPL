@@ -14,7 +14,7 @@
     *    - v1.0    2016/07/14 15:10    DayBreakZhang    0.1 
     *  @todo	    
     */  
-
+#import "C:\Program Files\Common Files\System\ado\msado15.dll" rename("EOF", "EndOfFile")
 namespace gpl
 {
 	//定义数据库类型

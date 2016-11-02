@@ -8,5 +8,7 @@ add_subdirectory(xml)
 add_subdirectory(json)
 #加入db目录
 add_subdirectory(DataBase)
+#加入sockets目录
+add_subdirectory(Sockets)
 
 

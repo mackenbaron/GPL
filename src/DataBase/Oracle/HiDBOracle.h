@@ -16,7 +16,7 @@
 #include<winsock2.h>
 #include <functional>
 
-#import "msado15.dll" rename_namespace("ADOCG") rename("EOF", "ADOEOF") rename("BOF", "ADOBOF")
+#import "C:\Program Files\Common Files\System\ado\msado15.dll" rename_namespace("ADOCG") rename("EOF", "ADOEOF") rename("BOF", "ADOBOF")
 
 #include "../HiDBImpl.h"
 
