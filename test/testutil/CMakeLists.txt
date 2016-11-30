@@ -7,8 +7,15 @@ LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/out/lib)
 
 #生成exe文件
 ADD_EXECUTABLE(TestUtile ${SRC_LIST})
+#生成不同的lib
+if(CMAKE_CL_64)
+	set(inputlib libutilx64)
+else()
+	set(inputlib libutil)
+endif()
+
 #添加库
-TARGET_LINK_LIBRARIES(TestUtile libutil)
+TARGET_LINK_LIBRARIES(TestUtile ${inputlib})
 #设置预编译
 SET_TARGET_PROPERTIES(TestUtile PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "stdafx.h")
 cotire(TestUtile)

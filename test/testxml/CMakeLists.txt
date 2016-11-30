@@ -7,8 +7,14 @@ LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/out/lib)
 
 #生成exe文件
 ADD_EXECUTABLE(TestXml ${SRC_LIST})
+#生成不同的lib
+if(CMAKE_CL_64)
+	set(inputlib libxmlx64 wsock32.lib ws2_32.lib libutilx64)
+else()
+	set(inputlib libxml wsock32.lib ws2_32.lib libutil)
+endif()
 #添加库
-TARGET_LINK_LIBRARIES(TestXml libxml wsock32.lib ws2_32.lib libutil)
+TARGET_LINK_LIBRARIES(TestXml ${inputlib})
 #设置预编译
 SET_TARGET_PROPERTIES(TestXml PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "stdafx.h")
 cotire(TestXml)

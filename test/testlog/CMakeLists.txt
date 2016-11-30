@@ -10,8 +10,15 @@ LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/out/lib)
 ADD_DEFINITIONS(-DGOOGLE_GLOG_DLL_DECL=)
 #生成exe文件
 ADD_EXECUTABLE(TestLog ${SRC_LIST})
+#生成不同的lib
+if(CMAKE_CL_64)
+	set(inputlib  liblogx64 libutilx64)
+else()
+	set(inputlib liblog libutil)
+endif()
+
 #添加库
-TARGET_LINK_LIBRARIES(TestLog liblog libutil)
+TARGET_LINK_LIBRARIES(TestLog ${inputlib})
 #设置预编译
 SET_TARGET_PROPERTIES(TestLog PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "stdafx.h")
 cotire(TestLog)

@@ -9,10 +9,18 @@ LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/out/lib)
 #设置c++编译器
 #ADD_DEFINITIONS(-TP)
 
+#生成不同的lib
+if(CMAKE_CL_64)
+	set(inputlib  libjsonx64 libutilx64)
+else()
+	set(inputlib libjson libutil)
+endif()
+
+
 #生成exe文件
 ADD_EXECUTABLE(TestJson ${SRC_LIST})
 #添加库
-TARGET_LINK_LIBRARIES(TestJson libjson libutil)
+TARGET_LINK_LIBRARIES(TestJson ${inputlib})
 #设置预编译
 SET_TARGET_PROPERTIES(TestJson PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "stdafx.h")
 cotire(TestJson)

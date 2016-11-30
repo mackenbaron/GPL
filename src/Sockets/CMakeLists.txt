@@ -4,10 +4,16 @@ AUX_SOURCE_DIRECTORY(. SRC_LIST)
 ADD_DEFINITIONS(-DUNICODE -D_UNICODE)
 #添加引用目录
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} $ENV{OPENSSL_ROOT_DIR}/include ${PROJECT_SOURCE_DIR}/src/xml ${PROJECT_SOURCE_DIR}/src/xml/iconv)
+#生成不同的target
+if(CMAKE_CL_64)
+	set(target  libSocketsx64)
+else()
+	set(target libSockets)
+endif()
 #设置静态库
-ADD_LIBRARY(libSockets STATIC ${SRC_LIST})
+ADD_LIBRARY(${target} STATIC ${SRC_LIST})
 #设置目录
-SET_TARGET_PROPERTIES(libSockets PROPERTIES FOLDER "Util")
+SET_TARGET_PROPERTIES(${target} PROPERTIES FOLDER "Util")
 #设置输出路径
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/out/lib)
 #复制头文件到inc/sockets

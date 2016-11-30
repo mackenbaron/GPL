@@ -206,10 +206,16 @@ ADD_DEFINITIONS(-DHAVE_CONFIG_H
 		-DLZMA_API_STATIC
 		-DHAVE_CONFIG_H
 		-DXTREE_STATIC_LIB)
+#生成不同的target
+if(CMAKE_CL_64)
+	set(target  libxmlx64)
+else()
+	set(target libxml)
+endif()
 #设置静态库
-ADD_LIBRARY(libxml STATIC ${SRC_LIST})
+ADD_LIBRARY(${target} STATIC ${SRC_LIST})
 #设置目录
-SET_TARGET_PROPERTIES(libxml PROPERTIES FOLDER "Util")
+SET_TARGET_PROPERTIES(${target} PROPERTIES FOLDER "Util")
 #设置输出路径
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/out/lib)
 #复制头文件到inc
